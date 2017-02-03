@@ -1644,7 +1644,7 @@ containing a value of this type.
         public static final int id_type=0x7f0c0061;
         public static final int ifRoom=0x7f0c001d;
         public static final int image=0x7f0c0026;
-        public static final int imageView1=0x7f0c0068;
+        public static final int image_button=0x7f0c0068;
         public static final int info=0x7f0c0078;
         public static final int line1=0x7f0c0072;
         public static final int line3=0x7f0c0076;

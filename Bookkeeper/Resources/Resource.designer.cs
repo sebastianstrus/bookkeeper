@@ -1586,7 +1586,7 @@ namespace Bookkeeper
 			public const int image = 2131492902;
 			
 			// aapt resource value: 0x7f0c0068
-			public const int imageView1 = 2131492968;
+			public const int image_button = 2131492968;
 			
 			// aapt resource value: 0x7f0c0078
 			public const int info = 2131492984;

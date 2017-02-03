@@ -1,5 +1,5 @@
 ﻿<Properties StartupConfiguration="{36E1F6EC-FE74-4C6F-B659-EF0668E14027}|Default">
-  <MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workbench ActiveDocument="Bookkeeper/ActivityNewEntry.cs">
     <Files>
       <File FileName="Bookkeeper/Model/Entry.cs" Line="11" Column="3" />
       <File FileName="Bookkeeper/Model/EntryMenager.cs" Line="33" Column="4" />
@@ -7,7 +7,7 @@
       <File FileName="Bookkeeper/EntryAdapter.cs" Line="8" Column="14" />
       <File FileName="Bookkeeper/MainMenuActivity.cs" Line="37" Column="2" />
       <File FileName="Bookkeeper/DatePickerFragment.cs" Line="40" Column="18" />
-      <File FileName="Bookkeeper/ActivityNewEntry.cs" Line="28" Column="69" />
+      <File FileName="Bookkeeper/ActivityNewEntry.cs" Line="12" Column="24" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
@@ -15,5 +15,5 @@
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <MonoDevelop.Ide.ItemProperties.Bookkeeper AndroidDesignerPreferredDevice="Nexus 4" PreferredExecutionTarget="Android.Android_Accelerated_x86" />
+  <MonoDevelop.Ide.ItemProperties.Bookkeeper AndroidDesignerPreferredDevice="Nexus 4" PreferredExecutionTarget="Android.Nexus_5_API_25" />
 </Properties>

@@ -133,7 +133,7 @@
             android:layout_width="fill_parent"
             android:layout_height="300.0dp"
             android:src="@drawable/image"
-            android:id="@+id/imageView1"
+            android:id="@+id/image_button"
             android:adjustViewBounds="true" />
         <Button
             android:text="Lägg till händelse"
