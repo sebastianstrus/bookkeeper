@@ -126,7 +126,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/openCamera" />
     <ImageView
-        android:src="@android:drawable/image"
+        android:src="@android:drawable/ic_gallry"
         android:layout_width="fill_parent"
         android:layout_height="300.0dp"
         android:id="@+id/imageView1"

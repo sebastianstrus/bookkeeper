@@ -1,13 +1,13 @@
 ﻿<Properties StartupConfiguration="{36E1F6EC-FE74-4C6F-B659-EF0668E14027}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Bookkeeper/ActivityNewEntry.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Bookkeeper/Model/Entry.cs">
     <Files>
       <File FileName="Bookkeeper/Model/Entry.cs" Line="9" Column="40" />
-      <File FileName="Bookkeeper/Model/EntryMenager.cs" Line="31" Column="4" />
+      <File FileName="Bookkeeper/Model/EntryMenager.cs" Line="33" Column="4" />
       <File FileName="Bookkeeper/AllEntriesActivity.cs" Line="19" Column="55" />
       <File FileName="Bookkeeper/EntryAdapter.cs" Line="8" Column="14" />
       <File FileName="Bookkeeper/MainMenuActivity.cs" Line="37" Column="2" />
-      <File FileName="Bookkeeper/DatePickerFragment.cs" Line="4" Column="41" />
-      <File FileName="Bookkeeper/ActivityNewEntry.cs" Line="26" Column="55" />
+      <File FileName="Bookkeeper/DatePickerFragment.cs" Line="40" Column="18" />
+      <File FileName="Bookkeeper/ActivityNewEntry.cs" Line="28" Column="69" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />

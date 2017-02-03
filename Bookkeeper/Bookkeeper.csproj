@@ -78,6 +78,7 @@
     <AndroidResource Include="Resources\layout\activity_main_menu.axml" />
     <AndroidResource Include="Resources\layout\activity_new_entry.axml" />
     <AndroidResource Include="Resources\drawable\image.png" />
+    <AndroidResource Include="Resources\drawable\ic_gallry.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\drawable\" />
