@@ -71,6 +71,31 @@ namespace Bookkeeper
 			}
 		}
 		
+		public partial class Array
+		{
+			
+			// aapt resource value: 0x7f0d0001
+			public const int account_array = 2131558401;
+			
+			// aapt resource value: 0x7f0d0002
+			public const int tax_rate_array = 2131558402;
+			
+			// aapt resource value: 0x7f0d0003
+			public const int total_amount_array = 2131558403;
+			
+			// aapt resource value: 0x7f0d0000
+			public const int type_array = 2131558400;
+			
+			static Array()
+			{
+				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
+			}
+			
+			private Array()
+			{
+			}
+		}
+		
 		public partial class Attribute
 		{
 			
@@ -1432,8 +1457,8 @@ namespace Bookkeeper
 		public partial class Id
 		{
 			
-			// aapt resource value: 0x7f0c006d
-			public const int action0 = 2131492973;
+			// aapt resource value: 0x7f0c0070
+			public const int action0 = 2131492976;
 			
 			// aapt resource value: 0x7f0c0041
 			public const int action_bar = 2131492929;
@@ -1459,8 +1484,8 @@ namespace Bookkeeper
 			// aapt resource value: 0x7f0c0042
 			public const int action_context_bar = 2131492930;
 			
-			// aapt resource value: 0x7f0c0071
-			public const int action_divider = 2131492977;
+			// aapt resource value: 0x7f0c0074
+			public const int action_divider = 2131492980;
 			
 			// aapt resource value: 0x7f0c0002
 			public const int action_menu_divider = 2131492866;
@@ -1489,8 +1514,8 @@ namespace Bookkeeper
 			// aapt resource value: 0x7f0c0018
 			public const int beginning = 2131492888;
 			
-			// aapt resource value: 0x7f0c0069
-			public const int btn_add_entry = 2131492969;
+			// aapt resource value: 0x7f0c006c
+			public const int btn_add_entry = 2131492972;
 			
 			// aapt resource value: 0x7f0c0055
 			public const int btn_all_antries = 2131492949;
@@ -1504,20 +1529,20 @@ namespace Bookkeeper
 			// aapt resource value: 0x7f0c0054
 			public const int btn_new_entry = 2131492948;
 			
-			// aapt resource value: 0x7f0c0067
-			public const int btn_open_camera = 2131492967;
+			// aapt resource value: 0x7f0c006a
+			public const int btn_open_camera = 2131492970;
 			
 			// aapt resource value: 0x7f0c002b
 			public const int buttonPanel = 2131492907;
 			
-			// aapt resource value: 0x7f0c006e
-			public const int cancel_action = 2131492974;
+			// aapt resource value: 0x7f0c0071
+			public const int cancel_action = 2131492977;
 			
 			// aapt resource value: 0x7f0c0039
 			public const int checkbox = 2131492921;
 			
-			// aapt resource value: 0x7f0c0074
-			public const int chronometer = 2131492980;
+			// aapt resource value: 0x7f0c0077
+			public const int chronometer = 2131492983;
 			
 			// aapt resource value: 0x7f0c001c
 			public const int collapseActionView = 2131492892;
@@ -1537,6 +1562,9 @@ namespace Bookkeeper
 			// aapt resource value: 0x7f0c0027
 			public const int default_activity_button = 2131492903;
 			
+			// aapt resource value: 0x7f0c005f
+			public const int description = 2131492959;
+			
 			// aapt resource value: 0x7f0c000c
 			public const int disableHome = 2131492876;
 			
@@ -1546,8 +1574,8 @@ namespace Bookkeeper
 			// aapt resource value: 0x7f0c0019
 			public const int end = 2131492889;
 			
-			// aapt resource value: 0x7f0c0079
-			public const int end_padder = 2131492985;
+			// aapt resource value: 0x7f0c007c
+			public const int end_padder = 2131492988;
 			
 			// aapt resource value: 0x7f0c0053
 			public const int entry_list = 2131492947;
@@ -1567,17 +1595,8 @@ namespace Bookkeeper
 			// aapt resource value: 0x7f0c0029
 			public const int icon = 2131492905;
 			
-			// aapt resource value: 0x7f0c0064
-			public const int id_amount = 2131492964;
-			
-			// aapt resource value: 0x7f0c005f
-			public const int id_description = 2131492959;
-			
-			// aapt resource value: 0x7f0c0066
-			public const int id_tax_rate = 2131492966;
-			
-			// aapt resource value: 0x7f0c0061
-			public const int id_type = 2131492961;
+			// aapt resource value: 0x7f0c0065
+			public const int id_amount = 2131492965;
 			
 			// aapt resource value: 0x7f0c001d
 			public const int ifRoom = 2131492893;
@@ -1585,17 +1604,17 @@ namespace Bookkeeper
 			// aapt resource value: 0x7f0c0026
 			public const int image = 2131492902;
 			
-			// aapt resource value: 0x7f0c0068
-			public const int image_button = 2131492968;
+			// aapt resource value: 0x7f0c006b
+			public const int image_button = 2131492971;
 			
-			// aapt resource value: 0x7f0c0078
-			public const int info = 2131492984;
+			// aapt resource value: 0x7f0c007b
+			public const int info = 2131492987;
 			
-			// aapt resource value: 0x7f0c0072
-			public const int line1 = 2131492978;
+			// aapt resource value: 0x7f0c0075
+			public const int line1 = 2131492981;
 			
-			// aapt resource value: 0x7f0c0076
-			public const int line3 = 2131492982;
+			// aapt resource value: 0x7f0c0079
+			public const int line3 = 2131492985;
 			
 			// aapt resource value: 0x7f0c0009
 			public const int listMode = 2131492873;
@@ -1603,8 +1622,8 @@ namespace Bookkeeper
 			// aapt resource value: 0x7f0c0028
 			public const int list_item = 2131492904;
 			
-			// aapt resource value: 0x7f0c0070
-			public const int media_actions = 2131492976;
+			// aapt resource value: 0x7f0c0073
+			public const int media_actions = 2131492979;
 			
 			// aapt resource value: 0x7f0c001a
 			public const int middle = 2131492890;
@@ -1714,6 +1733,18 @@ namespace Bookkeeper
 			// aapt resource value: 0x7f0c002c
 			public const int spacer = 2131492908;
 			
+			// aapt resource value: 0x7f0c0063
+			public const int spinner_account = 2131492963;
+			
+			// aapt resource value: 0x7f0c0067
+			public const int spinner_tax_rate = 2131492967;
+			
+			// aapt resource value: 0x7f0c0069
+			public const int spinner_total_amount = 2131492969;
+			
+			// aapt resource value: 0x7f0c0061
+			public const int spinner_type = 2131492961;
+			
 			// aapt resource value: 0x7f0c0007
 			public const int split_action_bar = 2131492871;
 			
@@ -1726,8 +1757,8 @@ namespace Bookkeeper
 			// aapt resource value: 0x7f0c0017
 			public const int src_over = 2131492887;
 			
-			// aapt resource value: 0x7f0c006f
-			public const int status_bar_latest_event_content = 2131492975;
+			// aapt resource value: 0x7f0c0072
+			public const int status_bar_latest_event_content = 2131492978;
 			
 			// aapt resource value: 0x7f0c004c
 			public const int submit_area = 2131492940;
@@ -1735,17 +1766,17 @@ namespace Bookkeeper
 			// aapt resource value: 0x7f0c000b
 			public const int tabMode = 2131492875;
 			
-			// aapt resource value: 0x7f0c0077
-			public const int text = 2131492983;
+			// aapt resource value: 0x7f0c007a
+			public const int text = 2131492986;
 			
-			// aapt resource value: 0x7f0c0075
-			public const int text2 = 2131492981;
+			// aapt resource value: 0x7f0c0078
+			public const int text2 = 2131492984;
 			
 			// aapt resource value: 0x7f0c0034
 			public const int textSpacerNoButtons = 2131492916;
 			
-			// aapt resource value: 0x7f0c0073
-			public const int time = 2131492979;
+			// aapt resource value: 0x7f0c0076
+			public const int time = 2131492982;
 			
 			// aapt resource value: 0x7f0c002a
 			public const int title = 2131492906;
@@ -1756,20 +1787,20 @@ namespace Bookkeeper
 			// aapt resource value: 0x7f0c002e
 			public const int topPanel = 2131492910;
 			
-			// aapt resource value: 0x7f0c006c
-			public const int tvAmount = 2131492972;
+			// aapt resource value: 0x7f0c006f
+			public const int tvAmount = 2131492975;
 			
-			// aapt resource value: 0x7f0c006a
-			public const int tvDate = 2131492970;
+			// aapt resource value: 0x7f0c006d
+			public const int tvDate = 2131492973;
 			
-			// aapt resource value: 0x7f0c006b
-			public const int tvTitle = 2131492971;
+			// aapt resource value: 0x7f0c006e
+			public const int tvTitle = 2131492974;
 			
 			// aapt resource value: 0x7f0c0062
 			public const int tv_account_label = 2131492962;
 			
-			// aapt resource value: 0x7f0c0063
-			public const int tv_amount_label = 2131492963;
+			// aapt resource value: 0x7f0c0064
+			public const int tv_amount_label = 2131492964;
 			
 			// aapt resource value: 0x7f0c005c
 			public const int tv_date_display = 2131492956;
@@ -1780,8 +1811,11 @@ namespace Bookkeeper
 			// aapt resource value: 0x7f0c005e
 			public const int tv_description_label = 2131492958;
 			
-			// aapt resource value: 0x7f0c0065
-			public const int tv_tax_rate_label = 2131492965;
+			// aapt resource value: 0x7f0c0066
+			public const int tv_tax_rate_label = 2131492966;
+			
+			// aapt resource value: 0x7f0c0068
+			public const int tv_total_amount_label = 2131492968;
 			
 			// aapt resource value: 0x7f0c0060
 			public const int tv_type_label = 2131492960;
@@ -2048,6 +2082,9 @@ namespace Bookkeeper
 			// aapt resource value: 0x7f060012
 			public const int abc_toolbar_collapse_description = 2131099666;
 			
+			// aapt resource value: 0x7f060017
+			public const int account = 2131099671;
+			
 			// aapt resource value: 0x7f060015
 			public const int app_name = 2131099669;
 			
@@ -2056,6 +2093,15 @@ namespace Bookkeeper
 			
 			// aapt resource value: 0x7f060013
 			public const int status_bar_notification_info_overflow = 2131099667;
+			
+			// aapt resource value: 0x7f060018
+			public const int tax_rate = 2131099672;
+			
+			// aapt resource value: 0x7f060019
+			public const int total_amount = 2131099673;
+			
+			// aapt resource value: 0x7f060016
+			public const int type = 2131099670;
 			
 			static String()
 			{

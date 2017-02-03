@@ -58,11 +58,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Beskrivning: " />
-            <Button
-                android:id="@+id/id_description"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Väjl datum" />
+            <EditText
+                android:id="@+id/description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
         </LinearLayout>
         <LinearLayout
             android:orientation="horizontal"
@@ -73,11 +72,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Typ: " />
-            <Button
-                android:id="@+id/id_type"
-                android:layout_width="wrap_content"
+            <Spinner
+                android:id="@+id/spinner_type"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Väjl datum" />
+                android:prompt="@string/type" />
         </LinearLayout>
         <LinearLayout
             android:orientation="horizontal"
@@ -88,11 +87,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Till/från konto: " />
-            <Button
-                android:id="@+id/btn_date_button"
-                android:layout_width="wrap_content"
+            <Spinner
+                android:id="@+id/spinner_account"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Väjl datum" />
+                android:prompt="@string/account" />
         </LinearLayout>
         <LinearLayout
             android:orientation="horizontal"
@@ -103,11 +102,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Totalt belopp (inkl. moms): " />
-            <Button
+            <EditText
                 android:id="@+id/id_amount"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Väjl datum" />
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
         </LinearLayout>
         <LinearLayout
             android:orientation="horizontal"
@@ -118,18 +116,33 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Moms: " />
-            <Button
-                android:id="@+id/id_tax_rate"
+            <Spinner
+                android:id="@+id/spinner_tax_rate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:prompt="@string/tax_rate" />
+        </LinearLayout>
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/tv_total_amount_label"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Väjl datum" />
+                android:text="Total belopp: " />
+            <Spinner
+                android:id="@+id/spinner_total_amount"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:prompt="@string/total_amount" />
         </LinearLayout>
         <Button
             android:text="Ta bild"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/btn_open_camera" />
-        <ImageButton
+        <ImageView
             android:layout_width="fill_parent"
             android:layout_height="300.0dp"
             android:src="@drawable/image"

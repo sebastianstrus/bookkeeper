@@ -6,7 +6,6 @@
   <uses-permission android:name="android.permission.INTERNET" />
   <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
   <application android:allowBackup="true" android:icon="@mipmap/icon" android:label="@string/app_name" android:name="android.app.Application" android:debuggable="true">
-    <activity android:label="MainActivity" android:name="md5678b55b847118b97b77ab09e3bf8bf02.AllEntriesActivity" />
     <activity android:icon="@mipmap/icon" android:label="Bookkeeper" android:name="md5678b55b847118b97b77ab09e3bf8bf02.MainMenuActivity">
       <intent-filter>
         <action android:name="android.intent.action.MAIN" />

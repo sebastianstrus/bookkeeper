@@ -18,6 +18,8 @@ using AEnvironment = Android.OS.Environment;
 using AFile = Java.IO.File;
 using AUri = Android.Net.Uri;
 
+
+
 namespace Bookkeeper
 {
 	[Activity(Label = "New Entry")]
@@ -26,12 +28,44 @@ namespace Bookkeeper
 
 		TextView _dateDisplay;
 		Button _dateSelectButton;
-		ImageButton _imageButton;
+		ImageView _imageButton;
+
+		Spinner spinnerType;
+		Spinner spinnerAccount;
+		Spinner spinnerTaxRate;
+		Spinner spinnerTotalAmount;
+
 
 		protected override void OnCreate(Bundle savedInstanceState)
 		{
 			base.OnCreate(savedInstanceState);
 			SetContentView(Resource.Layout.activity_new_entry);
+
+			// Spinners
+			spinnerType = FindViewById<Spinner>(Resource.Id.spinner_type);
+			ArrayAdapter adapterType = ArrayAdapter.CreateFromResource(this, Resource.Array.type_array, 
+				Android.Resource.Layout.SimpleSpinnerItem);
+			adapterType.SetDropDownViewResource(Android.Resource.Layout.SimpleSpinnerDropDownItem);
+			spinnerType.Adapter = adapterType;
+
+
+			spinnerAccount = FindViewById<Spinner>(Resource.Id.spinner_account);
+			ArrayAdapter adapterAccount = ArrayAdapter.CreateFromResource(this, Resource.Array.account_array,
+				Android.Resource.Layout.SimpleSpinnerItem);
+			spinnerAccount.Adapter = adapterAccount;
+
+
+			spinnerTaxRate = FindViewById<Spinner>(Resource.Id.spinner_tax_rate);
+			ArrayAdapter adapterTaxRate = ArrayAdapter.CreateFromResource(this, Resource.Array.tax_rate_array,
+				Android.Resource.Layout.SimpleSpinnerItem);
+			spinnerTaxRate.Adapter = adapterTaxRate;
+
+
+			spinnerTotalAmount = FindViewById<Spinner>(Resource.Id.spinner_total_amount);
+			ArrayAdapter adapterTotalAmount = ArrayAdapter.CreateFromResource(this, Resource.Array.total_amount_array,
+				Android.Resource.Layout.SimpleSpinnerItem);
+			spinnerTotalAmount.Adapter = adapterTotalAmount;
+
 
 			//DatePicker
 			_dateDisplay = FindViewById<TextView>(Resource.Id.tv_date_display);
@@ -45,7 +79,7 @@ namespace Bookkeeper
 				CreateDirectoryForPictures();
 
 				Button button = FindViewById<Button>(Resource.Id.btn_open_camera);
-				_imageButton = FindViewById<ImageButton>(Resource.Id.image_button);
+				_imageButton = FindViewById<ImageView>(Resource.Id.image_button);
 				button.Click += TakeAPicture;
 			}
 		}
@@ -82,6 +116,7 @@ namespace Bookkeeper
 			return availableActivities != null && availableActivities.Count > 0;
 		}
 
+		//se strony developera
 		// Take picture
 		private void TakeAPicture(object sender, EventArgs eventArgs)
 		{
@@ -91,6 +126,7 @@ namespace Bookkeeper
 			StartActivityForResult(intent, 0);
 		}
 
+		//se strony developera
 		// Create directory and save picture
 		protected override void OnActivityResult(int requestCode, Result resultCode, Intent data)
 		{
@@ -119,11 +155,21 @@ namespace Bookkeeper
 			// Dispose of the Java side bitmap.
 			GC.Collect();
 		}
+
+		private void AddEntry()
+		{
+			string currentType = spinnerType.SelectedItem.ToString(); // do something
+			string currentAccount = spinnerAccount.SelectedItem.ToString();
+			string currentTaxRate = spinnerTaxRate.SelectedItem.ToString();
+			string currentTotalAmount = spinnerTotalAmount.SelectedItem.ToString();
+
+			// TODO: create and use constructor
+		}
 	}
 
 
 
-
+	//se strony developera
 	public static class App
 	{
 		public static AFile _file;
@@ -133,7 +179,7 @@ namespace Bookkeeper
 
 
 
-
+	//se strony developera
 	public static class BitmapHelpers
 	{
 		public static Bitmap LoadAndResizeBitmap(this string fileName, int width, int height)

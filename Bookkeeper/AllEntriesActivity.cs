@@ -2,10 +2,11 @@
 using Android.Widget;
 using Android.OS;
 using System;
+using System.Reflection.Emit;
 
 namespace Bookkeeper
 {
-	[Activity(Label = "MainActivity")]
+	
 	public class AllEntriesActivity : Activity
 	{
 		private ListView entryList;
