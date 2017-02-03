@@ -1,8 +1,139 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" android:orientation="vertical" android:layout_width="match_parent" android:layout_height="match_parent">
-	<TextView
-		android:layout_width="match_parent"
-		android:layout_height="wrap_content"
-		android:text="Här kan du lägga till nya händelser, antigen inkomster eller utgifter."/>
-
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Här kan du lägga till nya händelser, antigen inkomster eller utgifter." />
+    <RadioGroup
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/radioGroup1">
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="Inkomst"
+            android:id="@+id/radioButton1" />
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Utgift"
+            android:id="@+id/radioButton2" />
+    </RadioGroup>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/tv_date_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Datum: " />
+        <TextView
+            android:id="@+id/tv_date_display"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="-" />
+    </LinearLayout>
+    <Button
+        android:id="@+id/btn_date_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Väjl datum" />
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/tv_description_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Beskrivning: " />
+        <Button
+            android:id="@+id/id_description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Väjl datum" />
+    </LinearLayout>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/tv_type_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Typ: " />
+        <Button
+            android:id="@+id/id_type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Väjl datum" />
+    </LinearLayout>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/tv_account_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Till/från konto: " />
+        <Button
+            android:id="@+id/btn_date_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Väjl datum" />
+    </LinearLayout>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/tv_amount_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Totalt belopp (inkl. moms): " />
+        <Button
+            android:id="@+id/id_amount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Väjl datum" />
+    </LinearLayout>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/tv_tax_rate_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Moms: " />
+        <Button
+            android:id="@+id/id_tax_rate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Väjl datum" />
+    </LinearLayout>
+    <Button
+        android:text="Ta bild"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/openCamera" />
+    <ImageView
+        android:src="@android:drawable/image"
+        android:layout_width="fill_parent"
+        android:layout_height="300.0dp"
+        android:id="@+id/imageView1"
+        android:adjustViewBounds="true" />
+    <Button
+        android:text="Lägg till händelse"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/button2" />
 </LinearLayout>

@@ -58,6 +58,7 @@
     <Compile Include="EntryAdapter.cs" />
     <Compile Include="MainMenuActivity.cs" />
     <Compile Include="ActivityNewEntry.cs" />
+    <Compile Include="DatePickerFragment.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -76,6 +77,7 @@
     <AndroidResource Include="Resources\layout\entry_list_item.axml" />
     <AndroidResource Include="Resources\layout\activity_main_menu.axml" />
     <AndroidResource Include="Resources\layout\activity_new_entry.axml" />
+    <AndroidResource Include="Resources\drawable\image.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\drawable\" />
