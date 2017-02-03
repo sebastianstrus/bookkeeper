@@ -1612,11 +1612,12 @@ containing a value of this type.
         public static final int alertTitle=0x7f0c0030;
         public static final int always=0x7f0c001b;
         public static final int beginning=0x7f0c0018;
+        public static final int btn_add_entry=0x7f0c0069;
         public static final int btn_all_antries=0x7f0c0055;
         public static final int btn_create_reports=0x7f0c0056;
         public static final int btn_date_button=0x7f0c005d;
         public static final int btn_new_entry=0x7f0c0054;
-        public static final int button2=0x7f0c0069;
+        public static final int btn_open_camera=0x7f0c0067;
         public static final int buttonPanel=0x7f0c002b;
         public static final int cancel_action=0x7f0c006e;
         public static final int checkbox=0x7f0c0039;
@@ -1655,7 +1656,6 @@ containing a value of this type.
         public static final int never=0x7f0c001e;
         public static final int none=0x7f0c000e;
         public static final int normal=0x7f0c000a;
-        public static final int openCamera=0x7f0c0067;
         public static final int parentPanel=0x7f0c002d;
         public static final int progress_circular=0x7f0c0005;
         public static final int progress_horizontal=0x7f0c0006;

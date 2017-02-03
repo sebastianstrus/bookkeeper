@@ -128,16 +128,17 @@
             android:text="Ta bild"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/openCamera" />
-        <ImageView
+            android:id="@+id/btn_open_camera" />
+        <ImageButton
             android:layout_width="fill_parent"
             android:layout_height="300.0dp"
+            android:src="@drawable/image"
             android:id="@+id/imageView1"
             android:adjustViewBounds="true" />
         <Button
             android:text="Lägg till händelse"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/button2" />
+            android:id="@+id/btn_add_entry" />
     </LinearLayout>
 </ScrollView>
