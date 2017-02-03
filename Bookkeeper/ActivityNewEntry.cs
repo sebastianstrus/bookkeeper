@@ -25,6 +25,9 @@ namespace Bookkeeper
 			base.OnCreate(savedInstanceState);
 			SetContentView(Resource.Layout.activity_new_entry);
 
+			ImageView imageView = FindViewById<ImageView>(Resource.Id.imageView1);
+			imageView.SetImageResource(Resource.Drawable.image);
+
 			_dateDisplay = FindViewById<TextView>(Resource.Id.tv_date_display);
 			_dateSelectButton = FindViewById<Button>(Resource.Id.btn_date_button);
 			_dateSelectButton.Click += DateSelect_OnClick;

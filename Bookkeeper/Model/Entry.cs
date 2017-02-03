@@ -8,5 +8,6 @@ namespace Bookkeeper
 		public int Amount { get; set; }
 		public bool IsImportant { get; set; }
 
+
 	}
 }

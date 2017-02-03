@@ -1,7 +1,7 @@
 ﻿<Properties StartupConfiguration="{36E1F6EC-FE74-4C6F-B659-EF0668E14027}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Bookkeeper/Model/Entry.cs">
+  <MonoDevelop.Ide.Workbench>
     <Files>
-      <File FileName="Bookkeeper/Model/Entry.cs" Line="9" Column="40" />
+      <File FileName="Bookkeeper/Model/Entry.cs" Line="11" Column="3" />
       <File FileName="Bookkeeper/Model/EntryMenager.cs" Line="33" Column="4" />
       <File FileName="Bookkeeper/AllEntriesActivity.cs" Line="19" Column="55" />
       <File FileName="Bookkeeper/EntryAdapter.cs" Line="8" Column="14" />
