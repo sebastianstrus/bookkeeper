@@ -1,5 +1,4 @@
-﻿
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -24,7 +23,6 @@ namespace Bookkeeper
 		protected override void OnCreate(Bundle savedInstanceState)
 		{
 			base.OnCreate(savedInstanceState);
-
 			SetContentView(Resource.Layout.activity_main_menu);
 
 			btnNewEntry = FindViewById<Button>(Resource.Id.btn_new_entry);
@@ -49,6 +47,9 @@ namespace Bookkeeper
 				Intent intent = new Intent(this, typeof(CreateReportsActivity));
 				this.StartActivity(intent);
 			};
+
+
+
 		}
 	}
 }
