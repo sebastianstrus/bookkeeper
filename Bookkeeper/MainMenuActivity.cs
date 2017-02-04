@@ -19,6 +19,7 @@ namespace Bookkeeper
 
 		private Button btnNewEntry;
 		private Button btnAllEntries;
+		private Button btnCreateReports;
 
 		protected override void OnCreate(Bundle savedInstanceState)
 		{
@@ -29,13 +30,23 @@ namespace Bookkeeper
 			btnNewEntry = FindViewById<Button>(Resource.Id.btn_new_entry);
 			btnNewEntry.Click += delegate
 			{
-				Intent intent = new Intent(this, typeof(ActivityNewEntry));
+				Intent intent = new Intent(this, typeof(NewEntryActivity));
 				this.StartActivity(intent);
 			};
+
+
 			btnAllEntries = FindViewById<Button>(Resource.Id.btn_all_antries);
 			btnAllEntries.Click += delegate
 			{
 				Intent intent = new Intent(this, typeof(AllEntriesActivity));
+				this.StartActivity(intent);
+			};
+
+
+			btnCreateReports = FindViewById<Button>(Resource.Id.btn_create_reports);
+			btnCreateReports.Click += delegate
+			{
+				Intent intent = new Intent(this, typeof(CreateReportsActivity));
 				this.StartActivity(intent);
 			};
 		}

@@ -1,21 +1,21 @@
 ﻿<Properties StartupConfiguration="{36E1F6EC-FE74-4C6F-B659-EF0668E14027}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Bookkeeper/MainMenuActivity.cs">
+  <MonoDevelop.Ide.Workbench>
     <Files>
-      <File FileName="Bookkeeper/Model/Entry.cs" Line="11" Column="3" />
-      <File FileName="Bookkeeper/Model/EntryMenager.cs" Line="33" Column="4" />
-      <File FileName="Bookkeeper/AllEntriesActivity.cs" Line="9" Column="2" />
-      <File FileName="Bookkeeper/EntryAdapter.cs" Line="8" Column="14" />
+      <File FileName="Bookkeeper/Model/Entry.cs" Line="13" Column="3" />
+      <File FileName="Bookkeeper/Model/EntryMenager.cs" Line="35" Column="5" />
+      <File FileName="Bookkeeper/AllEntriesActivity.cs" Line="23" Column="32" />
+      <File FileName="Bookkeeper/EntryAdapter.cs" Line="43" Column="1" />
       <File FileName="Bookkeeper/DatePickerFragment.cs" Line="40" Column="18" />
-      <File FileName="Bookkeeper/ActivityNewEntry.cs" Line="161" Column="4" />
-      <File FileName="Bookkeeper/Resources/values/Strings.xml" Line="29" Column="28" />
-      <File FileName="Bookkeeper/MainMenuActivity.cs" Line="39" Column="1" />
+      <File FileName="Bookkeeper/NewEntryActivity.cs" Line="47" Column="4" />
+      <File FileName="Bookkeeper/MainMenuActivity.cs" Line="30" Column="1" />
+      <File FileName="Bookkeeper/Model/Account.cs" Line="1" Column="1" />
+      <File FileName="Bookkeeper/Model/TaxRate.cs" Line="11" Column="1" />
+      <File FileName="Bookkeeper/Resources/values/Strings.xml" Line="7" Column="28" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore>
-      <Breakpoint file="/Users/sebastianstrus/Projects/Bookkeeper/Bookkeeper/AllEntriesActivity.cs" line="9" column="1" />
-    </BreakpointStore>
+    <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.ItemProperties.Bookkeeper AndroidDesignerPreferredDevice="Nexus 4" PreferredExecutionTarget="Android.FastEmulator" />

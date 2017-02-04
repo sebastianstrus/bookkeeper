@@ -6,7 +6,7 @@ using System.Reflection.Emit;
 
 namespace Bookkeeper
 {
-	
+	[Activity(Label = "All Entries")]
 	public class AllEntriesActivity : Activity
 	{
 		private ListView entryList;

@@ -15,6 +15,7 @@
 /Users/sebastianstrus/Projects/Bookkeeper/Bookkeeper/obj/Debug/res/layout/activity_new_entry.xml
 /Users/sebastianstrus/Projects/Bookkeeper/Bookkeeper/obj/Debug/res/drawable/image.png
 /Users/sebastianstrus/Projects/Bookkeeper/Bookkeeper/obj/Debug/res/drawable/ic_gallry.png
+/Users/sebastianstrus/Projects/Bookkeeper/Bookkeeper/obj/Debug/res/layout/activity_create_reports.xml
 /Users/sebastianstrus/Projects/Bookkeeper/Bookkeeper/obj/Debug/R.cs.flag
 /Users/sebastianstrus/Projects/Bookkeeper/Bookkeeper/bin/Debug/com.companyname.bookkeeper-Signed.apk
 /Users/sebastianstrus/Projects/Bookkeeper/Bookkeeper/obj/Debug/uploadflags.txt

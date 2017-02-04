@@ -2,15 +2,28 @@
 <resources>
 	<string name="hello">Hello World, Click Me!</string>
 	<string name="app_name">Bookkeeper</string>
-
-	<string name="type">Categories</string>
-	<string-array name="type_array">
+	<string name="activity_new_entry">Här kan du lägga till nya händelser, antigen inkomster eller utgifter.</string>
+	<string name="date">Datum: </string>
+	<string name="choose_date">Väjl datum</string>
+	<string name="description">Beskrivning: </string>
+	
+	<string name="typ_label">Typ: </string>
+	<string name="type">Typ</string>
+	<string-array name="type_income_array">
+		<item>1a</item>
+		<item>1b</item>
+		<item>1c</item>
+	</string-array>
+	<string-array name="type_expense_array">
 		<item>1a</item>
 		<item>1b</item>
 		<item>1c</item>
 	</string-array>
 
-	<string name="account">Categories</string>
+	<string name="amount_incl_tax">Totalt belopp (inkl. moms): </string>
+	
+	<string name="account_label">Till/från konto: </string>
+	<string name="account">Konto</string>
 	<string-array name="account_array">
 		<item>2a</item>
 		<item>2b</item>
@@ -18,19 +31,14 @@
 		<item>2d</item>
 	</string-array>
 
-	<string name="tax_rate">Categories</string>
+	<string name="tax_rate_label">Moms: </string>
+	<string name="tax_rate">Moms</string>
 	<string-array name="tax_rate_array">
 		<item>3a</item>
 		<item>3b</item>
 		<item>3c</item>
 		<item>3d</item>
 	</string-array>
-
-	<string name="total_amount">Categories</string>
-	<string-array name="total_amount_array">
-		<item>4a</item>
-		<item>4b</item>
-		<item>4c</item>
-		<item>4d</item>
-	</string-array>
+	
+	<string name="total_amount_excl_tax">Total belopp (exkl. moms): </string>
 </resources>

@@ -57,8 +57,11 @@
     <Compile Include="Model\EntryMenager.cs" />
     <Compile Include="EntryAdapter.cs" />
     <Compile Include="MainMenuActivity.cs" />
-    <Compile Include="ActivityNewEntry.cs" />
+    <Compile Include="NewEntryActivity.cs" />
     <Compile Include="DatePickerFragment.cs" />
+    <Compile Include="Model\Account.cs" />
+    <Compile Include="Model\TaxRate.cs" />
+    <Compile Include="CreateReportsActivity.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -79,6 +82,7 @@
     <AndroidResource Include="Resources\layout\activity_new_entry.axml" />
     <AndroidResource Include="Resources\drawable\image.png" />
     <AndroidResource Include="Resources\drawable\ic_gallry.png" />
+    <AndroidResource Include="Resources\layout\activity_create_reports.axml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\drawable\" />
