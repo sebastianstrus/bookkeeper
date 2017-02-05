@@ -1664,11 +1664,11 @@ containing a value of this type.
         public static final int progress_circular=0x7f0c0005;
         public static final int progress_horizontal=0x7f0c0006;
         public static final int radio=0x7f0c003b;
-        public static final int radioButton1=0x7f0c0059;
-        public static final int radioButton2=0x7f0c005a;
         public static final int radioGroup1=0x7f0c0058;
         public static final int rb_all_entries=0x7f0c0050;
+        public static final int rb_expense=0x7f0c005a;
         public static final int rb_important_entries=0x7f0c0051;
+        public static final int rb_income=0x7f0c0059;
         public static final int rb_not_important_entries=0x7f0c0052;
         public static final int screen=0x7f0c0014;
         public static final int scroll=0x7f0c0057;

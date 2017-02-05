@@ -11,7 +11,8 @@
             android:id="@+id/rb_all_entries"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="All Entries" />
+            android:text="All Entries"
+            android:checked="true" />
         <RadioButton
             android:id="@+id/rb_important_entries"
             android:layout_width="wrap_content"

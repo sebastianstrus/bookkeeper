@@ -22,7 +22,7 @@ namespace Bookkeeper
 			// Get our button from the layout resource,
 			// and attach an event to it
 			entryList = FindViewById<ListView>(Resource.Id.entry_list);
-			entryList.Adapter = new EntryAdapter(this, EntryMenager.Instance.Entries);
+			entryList.Adapter = new EntryAdapter(this, BookkeeperMenager.Instance.Entries);
 
 			rbAllEntries = FindViewById<RadioButton>(Resource.Id.rb_all_entries);
 			rbImportantEntries = FindViewById<RadioButton>(Resource.Id.rb_important_entries);
@@ -37,17 +37,29 @@ namespace Bookkeeper
 		{
 			if (rbImportantEntries.Checked)
 			{
-				entryList.Adapter = new EntryAdapter(this, EntryMenager.Instance.ImportantEntries);
+				entryList.Adapter = new EntryAdapter(this, BookkeeperMenager.Instance.ImportantEntries);
 			}
 			else if (rbNotImportantEntries.Checked)
 			{
-				entryList.Adapter = new EntryAdapter(this, EntryMenager.Instance.NotImportantEntries);
+				entryList.Adapter = new EntryAdapter(this, BookkeeperMenager.Instance.NotImportantEntries);
 			}
 			else
 			{
-				entryList.Adapter = new EntryAdapter(this, EntryMenager.Instance.Entries);
+				entryList.Adapter = new EntryAdapter(this, BookkeeperMenager.Instance.Entries);
 			}
 		}
 	}
 }
 
+/*
+ * 
+ * public String Kind { get; set; }
+		public String Date { get; set; }
+		public String Description { get; set; }
+		public String Type { get; set; }
+		public String Account { get; set; }//class
+		public int Amount { get; set; }
+		public bool IsImportant { get; set; }//TaxRate
+		public String Path { get; set; } //Path
+
+*/

@@ -30,6 +30,9 @@ namespace Bookkeeper
 		Button _dateSelectButton;
 		ImageView _imageButton;
 
+		RadioButton rbIncome;
+		RadioButton rbExpense;
+
 		Spinner spinnerType;
 		ArrayAdapter adapterIncomeType;
 		ArrayAdapter adapterExpenseType;
@@ -39,6 +42,11 @@ namespace Bookkeeper
 
 		Spinner spinnerTaxRate;
 		ArrayAdapter adapterTaxRate;
+
+		EditText etDescription;
+
+
+		Button btnAddEntry;
 
 
 		protected override void OnCreate(Bundle savedInstanceState)
@@ -84,6 +92,36 @@ namespace Bookkeeper
 				_imageButton = FindViewById<ImageView>(Resource.Id.image_button);
 				button.Click += TakeAPicture;
 			}
+
+			// RadioButtons clicked
+			rbIncome = FindViewById<RadioButton>(Resource.Id.rb_income);
+			rbExpense = FindViewById<RadioButton>(Resource.Id.rb_expense);
+			rbIncome.Click += RadioButtonIncomeClick;
+			rbExpense.Click += RadioButtonExpenseClick;
+
+
+			btnAddEntry = FindViewById<Button>(Resource.Id.btn_add_entry);
+			btnAddEntry.Click += AddEntry_OnClick;
+
+
+			etDescription = FindViewById<EditText>(Resource.Id.description);
+		}
+
+
+
+
+
+
+
+
+		// RadioButtons clicked
+		void RadioButtonIncomeClick(object sender, EventArgs e)
+		{
+			spinnerType.Adapter = adapterIncomeType;
+		}
+		void RadioButtonExpenseClick(object sender, EventArgs e)
+		{
+			spinnerType.Adapter = adapterExpenseType;
 		}
 
 
@@ -158,15 +196,58 @@ namespace Bookkeeper
 			GC.Collect();
 		}
 
-		private void AddEntry()
+		//android:digits="0123456789.,"
+		//getText
+		void AddEntry_OnClick(object sender, EventArgs e)
 		{
-			/*string currentType = spinnerType.SelectedItem.ToString(); // do something
-			string currentAccount = spinnerAccount.SelectedItem.ToString();
-			string currentTaxRate = spinnerTaxRate.SelectedItem.ToString();
-*/
-			// TODO: create and use constructor from Entry class
+			if (true)
+			{
+				Entry temp = new Entry();
+				temp.Kind = rbIncome.Checked ? "Inkomst" : "Utgift";
+				temp.Date = _dateDisplay.Text;
+				temp.Description = etDescription.Text;
+				temp.Type = spinnerType.SelectedItem.ToString();
+				temp.Account = spinnerAccount.SelectedItem.ToString();
+				temp.Amount = 555;
+				temp.IsImportant = true;
+				temp.Path = "abc";
+				BookkeeperMenager.AddEntry(temp);
+
+
+
+
+				/*
+				 * 
+		public String Kind { get; set; }
+		public String Date { get; set; }
+		public String Description { get; set; }
+		public String Type { get; set; }
+		public String Account { get; set; }//class
+		public int Amount { get; set; }
+		public bool IsImportant { get; set; }//TaxRate
+		public String Path { get; set; } //Path
+		*/
+
+
+				//BookkeeperMenager.AddEntry(temp);
+				// TODO: create and use constructor from Entry class
+				//Entry tempEntry = new Entry();
+				//BookkeeperMenager.AddEntry(tempEntry);
+				Toast.MakeText(this, "Added", ToastLength.Short).Show();
+				Intent intent = new Intent(this, typeof(MainMenuActivity));
+				this.StartActivity(intent);
+			}
+			else
+			{
+				// TODO: create and use constructor from Entry class
+				Toast.MakeText(this, "Ange rätt uppgifter.", ToastLength.Short).Show();
+
+			}
 
 		}
+
+		// TODO: set amount excl tax
+
 	}
 
 

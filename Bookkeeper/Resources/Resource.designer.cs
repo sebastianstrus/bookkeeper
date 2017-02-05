@@ -1652,20 +1652,20 @@ namespace Bookkeeper
 			// aapt resource value: 0x7f0c003b
 			public const int radio = 2131492923;
 			
-			// aapt resource value: 0x7f0c0059
-			public const int radioButton1 = 2131492953;
-			
-			// aapt resource value: 0x7f0c005a
-			public const int radioButton2 = 2131492954;
-			
 			// aapt resource value: 0x7f0c0058
 			public const int radioGroup1 = 2131492952;
 			
 			// aapt resource value: 0x7f0c0050
 			public const int rb_all_entries = 2131492944;
 			
+			// aapt resource value: 0x7f0c005a
+			public const int rb_expense = 2131492954;
+			
 			// aapt resource value: 0x7f0c0051
 			public const int rb_important_entries = 2131492945;
+			
+			// aapt resource value: 0x7f0c0059
+			public const int rb_income = 2131492953;
 			
 			// aapt resource value: 0x7f0c0052
 			public const int rb_not_important_entries = 2131492946;

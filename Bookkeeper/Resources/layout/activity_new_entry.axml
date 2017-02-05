@@ -6,7 +6,8 @@
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_margin="5dp">
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -22,12 +23,12 @@
                 android:layout_height="wrap_content"
                 android:checked="true"
                 android:text="Inkomst"
-                android:id="@+id/radioButton1" />
+                android:id="@+id/rb_income" />
             <RadioButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Utgift"
-                android:id="@+id/radioButton2" />
+                android:id="@+id/rb_expense" />
         </RadioGroup>
         <LinearLayout
             android:orientation="horizontal"
@@ -36,7 +37,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/date" />
+                android:text="@string/date"
+                android:layout_marginRight="10px" />
             <TextView
                 android:id="@+id/tv_date_display"
                 android:layout_width="wrap_content"
@@ -55,11 +57,13 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/description" />
+                android:text="@string/description"
+                android:layout_marginRight="10px" />
             <EditText
                 android:id="@+id/description"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:maxLength="15" />
         </LinearLayout>
         <LinearLayout
             android:orientation="horizontal"
@@ -68,7 +72,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/typ_label" />
+                android:text="@string/typ_label"
+                android:layout_marginRight="10px" />
             <Spinner
                 android:id="@+id/spinner_type"
                 android:layout_width="match_parent"
@@ -83,7 +88,8 @@
                 android:id="@+id/tv_account_label"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/account_label" />
+                android:text="@string/account_label"
+                android:layout_marginRight="10px" />
             <Spinner
                 android:id="@+id/spinner_account"
                 android:layout_width="match_parent"
@@ -97,11 +103,14 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/amount_incl_tax" />
+                android:text="@string/amount_incl_tax"
+                android:layout_marginRight="10px" />
             <EditText
                 android:id="@+id/id_amount"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:digits="0123456789"
+                android:maxLength="12" />
         </LinearLayout>
         <LinearLayout
             android:orientation="horizontal"
@@ -110,7 +119,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/tax_rate_label" />
+                android:text="@string/tax_rate_label"
+                android:layout_marginRight="10px" />
             <Spinner
                 android:id="@+id/spinner_tax_rate"
                 android:layout_width="match_parent"
@@ -125,7 +135,8 @@
                 android:id="@+id/tv_total_amount_label"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/total_amount_excl_tax" />
+                android:text="@string/total_amount_excl_tax"
+                android:layout_marginRight="10px" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -141,7 +152,8 @@
             android:layout_height="300.0dp"
             android:src="@drawable/image"
             android:id="@+id/image_button"
-            android:adjustViewBounds="true" />
+            android:adjustViewBounds="true"
+            android:layout_margin="5dp" />
         <Button
             android:text="Lägg till händelse"
             android:layout_width="match_parent"

@@ -1,16 +1,13 @@
 ﻿<Properties StartupConfiguration="{36E1F6EC-FE74-4C6F-B659-EF0668E14027}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Bookkeeper/MainMenuActivity.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Bookkeeper/EntryAdapter.cs">
     <Files>
-      <File FileName="Bookkeeper/Model/Entry.cs" Line="13" Column="3" />
-      <File FileName="Bookkeeper/Model/EntryMenager.cs" Line="35" Column="5" />
-      <File FileName="Bookkeeper/AllEntriesActivity.cs" Line="23" Column="32" />
-      <File FileName="Bookkeeper/EntryAdapter.cs" Line="43" Column="1" />
-      <File FileName="Bookkeeper/DatePickerFragment.cs" Line="40" Column="18" />
-      <File FileName="Bookkeeper/NewEntryActivity.cs" Line="166" Column="3" />
-      <File FileName="Bookkeeper/MainMenuActivity.cs" Line="52" Column="4" />
-      <File FileName="Bookkeeper/Model/Account.cs" Line="1" Column="1" />
-      <File FileName="Bookkeeper/Model/TaxRate.cs" Line="11" Column="1" />
-      <File FileName="Bookkeeper/Resources/values/Strings.xml" Line="7" Column="28" />
+      <File FileName="Bookkeeper/Resources/values/Strings.xml" Line="15" Column="25" />
+      <File FileName="Bookkeeper/NewEntryActivity.cs" Line="210" Column="58" />
+      <File FileName="Bookkeeper/Model/Entry.cs" Line="7" Column="3" />
+      <File FileName="Bookkeeper/Model/BookkeeperMenager.cs" Line="76" Column="29" />
+      <File FileName="Bookkeeper/AllEntriesActivity.cs" Line="36" Column="61" />
+      <File FileName="Bookkeeper/MainMenuActivity.cs" Line="20" Column="55" />
+      <File FileName="Bookkeeper/EntryAdapter.cs" Line="23" Column="4" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
@@ -18,6 +15,6 @@
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <MonoDevelop.Ide.ItemProperties.Bookkeeper PreferredExecutionTarget="Android.FastEmulator" />
+  <MonoDevelop.Ide.ItemProperties.Bookkeeper AndroidDesignerPreferredDevice="Nexus 4" PreferredExecutionTarget="Android.Android_Accelerated_x86" />
   <MultiItemStartupConfigurations />
 </Properties>
