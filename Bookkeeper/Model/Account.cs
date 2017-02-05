@@ -8,4 +8,4 @@ namespace Bookkeeper
 		}
 	}
 }
-//namn, cyfra, to string : namn + " (" + number + ")"
+//namn, nummer, to string : namn + " (" + numeru 4 ostatnie cyfry + ")"

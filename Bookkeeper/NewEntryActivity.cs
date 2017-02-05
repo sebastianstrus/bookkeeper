@@ -196,7 +196,6 @@ namespace Bookkeeper
 			GC.Collect();
 		}
 
-		//android:digits="0123456789.,"
 		//getText
 		void AddEntry_OnClick(object sender, EventArgs e)
 		{
@@ -209,7 +208,7 @@ namespace Bookkeeper
 				temp.Type = spinnerType.SelectedItem.ToString();
 				temp.Account = spinnerAccount.SelectedItem.ToString();
 				temp.Amount = 555;
-				temp.IsImportant = true;
+				temp.IsImportant = true;// change to %
 				temp.Path = "abc";
 				BookkeeperMenager.AddEntry(temp);
 

@@ -54,7 +54,6 @@
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Model\Entry.cs" />
-    <Compile Include="Model\BookkeeperMenager.cs" />
     <Compile Include="EntryAdapter.cs" />
     <Compile Include="MainMenuActivity.cs" />
     <Compile Include="NewEntryActivity.cs" />
@@ -62,6 +61,7 @@
     <Compile Include="Model\Account.cs" />
     <Compile Include="Model\TaxRate.cs" />
     <Compile Include="CreateReportsActivity.cs" />
+    <Compile Include="BookkeeperMenager.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
