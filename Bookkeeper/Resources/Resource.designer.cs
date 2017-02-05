@@ -1514,6 +1514,9 @@ namespace Bookkeeper
 			// aapt resource value: 0x7f0c0018
 			public const int beginning = 2131492888;
 			
+			// aapt resource value: 0x7f0c0054
+			public const int btn_account_report = 2131492948;
+			
 			// aapt resource value: 0x7f0c0068
 			public const int btn_add_entry = 2131492968;
 			
@@ -1532,11 +1535,8 @@ namespace Bookkeeper
 			// aapt resource value: 0x7f0c0066
 			public const int btn_open_camera = 2131492966;
 			
-			// aapt resource value: 0x7f0c0054
-			public const int button1 = 2131492948;
-			
 			// aapt resource value: 0x7f0c0055
-			public const int button2 = 2131492949;
+			public const int btn_tax_report = 2131492949;
 			
 			// aapt resource value: 0x7f0c002b
 			public const int buttonPanel = 2131492907;
@@ -2079,6 +2079,9 @@ namespace Bookkeeper
 			// aapt resource value: 0x7f06001d
 			public const int account_label = 2131099677;
 			
+			// aapt resource value: 0x7f060022
+			public const int account_report = 2131099682;
+			
 			// aapt resource value: 0x7f060016
 			public const int activity_new_entry = 2131099670;
 			
@@ -2108,6 +2111,9 @@ namespace Bookkeeper
 			
 			// aapt resource value: 0x7f06001f
 			public const int tax_rate_label = 2131099679;
+			
+			// aapt resource value: 0x7f060023
+			public const int tax_report = 2131099683;
 			
 			// aapt resource value: 0x7f060021
 			public const int total_amount_excl_tax = 2131099681;

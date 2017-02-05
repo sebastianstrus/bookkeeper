@@ -1618,14 +1618,14 @@ containing a value of this type.
         public static final int alertTitle=0x7f0c0030;
         public static final int always=0x7f0c001b;
         public static final int beginning=0x7f0c0018;
+        public static final int btn_account_report=0x7f0c0054;
         public static final int btn_add_entry=0x7f0c0068;
         public static final int btn_all_antries=0x7f0c0057;
         public static final int btn_create_reports=0x7f0c0058;
         public static final int btn_date_button=0x7f0c005e;
         public static final int btn_new_entry=0x7f0c0056;
         public static final int btn_open_camera=0x7f0c0066;
-        public static final int button1=0x7f0c0054;
-        public static final int button2=0x7f0c0055;
+        public static final int btn_tax_report=0x7f0c0055;
         public static final int buttonPanel=0x7f0c002b;
         public static final int cancel_action=0x7f0c006d;
         public static final int checkbox=0x7f0c0039;
@@ -1797,6 +1797,7 @@ containing a value of this type.
         public static final int abc_toolbar_collapse_description=0x7f060012;
         public static final int account=0x7f06001e;
         public static final int account_label=0x7f06001d;
+        public static final int account_report=0x7f060022;
         public static final int activity_new_entry=0x7f060016;
         public static final int amount_incl_tax=0x7f06001c;
         public static final int app_name=0x7f060015;
@@ -1807,6 +1808,7 @@ containing a value of this type.
         public static final int status_bar_notification_info_overflow=0x7f060013;
         public static final int tax_rate=0x7f060020;
         public static final int tax_rate_label=0x7f06001f;
+        public static final int tax_report=0x7f060023;
         public static final int total_amount_excl_tax=0x7f060021;
         public static final int typ_label=0x7f06001a;
         public static final int type=0x7f06001b;

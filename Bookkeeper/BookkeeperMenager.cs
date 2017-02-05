@@ -75,6 +75,14 @@ namespace Bookkeeper
 		{
 			Instance.entries.Add(e); //or instance hmmm...
 		}
+
+
+
+		public string GetTaxReport()
+		{
+			return "abc";
+
+		}
 	}
 }
 

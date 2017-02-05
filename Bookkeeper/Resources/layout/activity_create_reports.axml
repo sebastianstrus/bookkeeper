@@ -4,13 +4,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
     <Button
-        android:text="Rapport över konton"
+        android:text="@string/account_report"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/button1" />
+        android:id="@+id/btn_account_report" />
     <Button
-        android:text="Momsrapport"
+        android:text="@string/tax_report"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/button2" />
+        android:id="@+id/btn_tax_report" />
 </LinearLayout>
