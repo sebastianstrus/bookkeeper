@@ -11,6 +11,7 @@ using Android.Graphics;
 using Android.OS;
 using Android.Provider;
 using Android.Runtime;
+using Android.Text;
 using Android.Views;
 using Android.Widget;
 
@@ -44,8 +45,9 @@ namespace Bookkeeper
 		ArrayAdapter adapterTaxRate;
 
 		EditText etDescription;
+		EditText etTotalAmountInclTax;
 
-
+		TextView tvTotalAmountExclTax;
 		Button btnAddEntry;
 
 
@@ -54,35 +56,45 @@ namespace Bookkeeper
 			base.OnCreate(savedInstanceState);
 			SetContentView(Resource.Layout.activity_new_entry);
 
+
+			//=============================================================================================
 			// Spinners
 			spinnerType = FindViewById<Spinner>(Resource.Id.spinner_type);
+			// TODO: change adapter and move array to BookkeeperMenager if needed?
 			adapterIncomeType = ArrayAdapter.CreateFromResource(this, Resource.Array.type_income_array, 
 				Android.Resource.Layout.SimpleSpinnerItem);
+			//adapterIncomeType = new ArrayAdapter(this, Android.Resource.Layout.SimpleSpinnerItem, BookkeeperMenager.Instance.IncomeTypeList.ToList());
 			adapterExpenseType = ArrayAdapter.CreateFromResource(this, Resource.Array.type_expense_array,
 				Android.Resource.Layout.SimpleSpinnerItem);
+			//adapterExpenseType = new ArrayAdapter(this, Android.Resource.Layout.SimpleSpinnerItem, BookkeeperMenager.Instance.ExpenseTypeList.ToList());
 			adapterIncomeType.SetDropDownViewResource(Android.Resource.Layout.SimpleSpinnerDropDownItem);
 			adapterExpenseType.SetDropDownViewResource(Android.Resource.Layout.SimpleSpinnerDropDownItem);
 			spinnerType.Adapter = adapterIncomeType;
 
-
+			//=============================================================================================
 			spinnerAccount = FindViewById<Spinner>(Resource.Id.spinner_account);
-			adapterAccount = ArrayAdapter.CreateFromResource(this, Resource.Array.account_array,
-				Android.Resource.Layout.SimpleSpinnerItem);
+			/*adapterAccount = ArrayAdapter.CreateFromResource(this, Resource.Array.account_array,
+				Android.Resource.Layout.SimpleSpinnerItem);*/
+			adapterAccount = new ArrayAdapter(this, Android.Resource.Layout.SimpleSpinnerItem, BookkeeperMenager.Instance.AccountList.ToList());
 			spinnerAccount.Adapter = adapterAccount;
-
+			//=============================================================================================
 
 			spinnerTaxRate = FindViewById<Spinner>(Resource.Id.spinner_tax_rate);
-			adapterTaxRate = ArrayAdapter.CreateFromResource(this, Resource.Array.tax_rate_array,
-				Android.Resource.Layout.SimpleSpinnerItem);
+			spinnerTaxRate.ItemSelected += new EventHandler<AdapterView.ItemSelectedEventArgs> (spinner_TaxRateSelected);
+			/*adapterTaxRate = ArrayAdapter.CreateFromResource(this, Resource.Array.tax_rate_array,
+				Android.Resource.Layout.SimpleSpinnerItem);*/
+			adapterTaxRate = new ArrayAdapter(this, Android.Resource.Layout.SimpleSpinnerItem, BookkeeperMenager.Instance.TaxRateList.ToList());
 			spinnerTaxRate.Adapter = adapterTaxRate;
 
+			//=============================================================================================
 
 			//DatePicker
+			// TODO: Change date format if needed?
 			_dateDisplay = FindViewById<TextView>(Resource.Id.tv_date_display);
 			_dateSelectButton = FindViewById<Button>(Resource.Id.btn_date_button);
 			_dateSelectButton.Click += DateSelect_OnClick;
 
-
+			//=============================================================================================
 			// Camera
 			if (IsThereAnAppToTakePictures())
 			{
@@ -105,6 +117,65 @@ namespace Bookkeeper
 
 
 			etDescription = FindViewById<EditText>(Resource.Id.description);
+
+			// set total amount excl. tax
+			tvTotalAmountExclTax = FindViewById<TextView>(Resource.Id.total_amount_excl_tax);
+			etTotalAmountInclTax = FindViewById<EditText>(Resource.Id.id_amount);
+			etTotalAmountInclTax.Text = "0";
+			etTotalAmountInclTax.TextChanged += etTextChanged;
+			etTotalAmountInclTax.KeyPress += etKeyPress;
+
+			//tvTotalAmountExclTax.Text = 
+				//brutto / (1 + skatt)
+		}
+
+		void etTextChanged(object sender, TextChangedEventArgs e)
+		{
+			string temp = spinnerTaxRate.SelectedItem.ToString();
+
+			double value = double.Parse(temp.Substring(0, temp.Length - 1)) / 100;
+
+			if (etTotalAmountInclTax.Text != "")
+			{
+				tvTotalAmountExclTax.Text = Math.Round(double.Parse(etTotalAmountInclTax.Text.ToString()) / (1 + value), 2) + "";
+				Console.WriteLine("EditText value is: " + value);
+			}
+		}
+
+		void etKeyPress(object sender, View.KeyEventArgs e)
+		{
+			e.Handled = false;
+			string temp = spinnerTaxRate.SelectedItem.ToString();
+
+			double value = double.Parse(temp.Substring(0, temp.Length - 1)) / 100;
+
+			if (etTotalAmountInclTax.Text != "")
+			{
+				tvTotalAmountExclTax.Text = Math.Round(double.Parse(etTotalAmountInclTax.Text.ToString()) / (1 + value), 2) + "";
+				Console.WriteLine("EditText value is: " + value);
+			}
+		}
+
+		private void spinner_TaxRateSelected(object sender, AdapterView.ItemSelectedEventArgs e)
+		{
+			//etTotalAmountInclTax.Text = "0";
+			//Spinner s = (Spinner)sender;
+			string temp = ((Spinner)sender).SelectedItem.ToString();
+			double value = double.Parse(temp.Substring(0, temp.Length - 1))/100; //t.ex. 0.12
+
+			if (etTotalAmountInclTax.Text != "")
+			{
+				tvTotalAmountExclTax.Text = Math.Round(double.Parse(etTotalAmountInclTax.Text.ToString()) / (1 + value), 2) + "";
+				Console.WriteLine("EditText value is: " + value);
+			}
+			//int a = 0, s.SelectedItem.ToString().Length -1;
+			Console.WriteLine(value);
+			//TODO: odjac znak '%'
+			// mam "12%" i liczbe brutto
+			//int.Parse(etTotalAmountInclTax.Text.ToString())
+
+			//netto = brutto/(1+skatt)
+			// Number.Substring(Number.Length - 4))
 		}
 
 
@@ -112,9 +183,7 @@ namespace Bookkeeper
 
 
 
-
-
-		// RadioButtons clicked
+		// RadioButtons clicked, change adapter for spinnerType
 		void RadioButtonIncomeClick(object sender, EventArgs e)
 		{
 			spinnerType.Adapter = adapterIncomeType;
@@ -124,13 +193,12 @@ namespace Bookkeeper
 			spinnerType.Adapter = adapterExpenseType;
 		}
 
-
 		// DateButton
 		void DateSelect_OnClick(object sender, EventArgs eventArgs)
 		{
 			DatePickerFragment frag = DatePickerFragment.NewInstance(delegate (DateTime time)
 																	 {
-																		 _dateDisplay.Text = time.ToLongDateString();
+				_dateDisplay.Text = time.ToShortDateString();
 																	 });
 			frag.Show(FragmentManager, DatePickerFragment.TAG);
 		}
@@ -196,49 +264,40 @@ namespace Bookkeeper
 			GC.Collect();
 		}
 
-		//getText
+		// Create Entry clicked
 		void AddEntry_OnClick(object sender, EventArgs e)
 		{
 			if (true)
 			{
-				Entry temp = new Entry();
-				temp.Kind = rbIncome.Checked ? "Inkomst" : "Utgift";
-				temp.Date = _dateDisplay.Text;
-				temp.Description = etDescription.Text;
-				temp.Type = spinnerType.SelectedItem.ToString();
-				temp.Account = spinnerAccount.SelectedItem.ToString();
-				temp.Amount = 555;
-				temp.IsImportant = true;// change to %
-				temp.Path = "abc";
+
+
+				Entry temp = new Entry
+				{
+					Kind = rbIncome.Checked ? "Inkomst" : "Utgift",
+					Date = _dateDisplay.Text,
+					Description = etDescription.Text,
+					Type = spinnerType.SelectedItem.ToString(),
+					Account = new Account
+					{
+						Name = "nazwa konta",
+						Number = "12345678"
+					},//spinnerAccount.SelectedItem.ToString();
+					Amount = int.Parse(etTotalAmountInclTax.Text.ToString()),
+					TaxRate = new TaxRate
+					{
+						Value = 0.12
+					},
+					Path = "abc",
+				};
 				BookkeeperMenager.AddEntry(temp);
 
-
-
-
-				/*
-				 * 
-		public String Kind { get; set; }
-		public String Date { get; set; }
-		public String Description { get; set; }
-		public String Type { get; set; }
-		public String Account { get; set; }//class
-		public int Amount { get; set; }
-		public bool IsImportant { get; set; }//TaxRate
-		public String Path { get; set; } //Path
-		*/
-
-
-				//BookkeeperMenager.AddEntry(temp);
-				// TODO: create and use constructor from Entry class
-				//Entry tempEntry = new Entry();
-				//BookkeeperMenager.AddEntry(tempEntry);
 				Toast.MakeText(this, "Added", ToastLength.Short).Show();
 				Intent intent = new Intent(this, typeof(MainMenuActivity));
 				this.StartActivity(intent);
 			}
 			else
 			{
-				// TODO: create and use constructor from Entry class
+				// TODO: some form validation if needed
 				Toast.MakeText(this, "Ange rätt uppgifter.", ToastLength.Short).Show();
 
 			}
@@ -296,3 +355,4 @@ namespace Bookkeeper
 
 
 }
+//netto = brutto/(1+skatt)

@@ -23,11 +23,24 @@ namespace Bookkeeper
 		private List<Entry> entries;
 		public List<Entry> Entries { get { return entries; } }
 
-		public List<Entry> ImportantEntries { get { return entries.Where(b => b.IsImportant).ToList(); } }
-		public List<Entry> NotImportantEntries { get { return entries.Where(b => !b.IsImportant).ToList(); } }
+		public List<Entry> ImportantEntries { get { return entries.Where(b => b.TaxRate.Value == 0.25).ToList(); } }
+		//public List<Entry> NotImportantEntries { get { return entries.Where(b => !b.IsImportant).ToList(); } }
+		public List<Entry> NotImportantEntries { get { return entries.Where(b => b.TaxRate.Value == 0.12).ToList(); } }
+
+		//public List<TaxRate> TaxRatesList;
+		//TaxRatesList.A
+
+		private List<Account> accountList;
+		public List<Account> AccountList { get { return accountList; } }
+		// TODO: add nizej
+
+		private List<TaxRate> taxRateList;
+		public List<TaxRate> TaxRateList { get { return taxRateList; } }
 
 
-		private BookkeeperMenager()
+		//{ get {return (25, 12, 6, 0).ToList}};
+
+	private BookkeeperMenager()
 		{
 			entries = new List<Entry>();
 
@@ -35,39 +48,101 @@ namespace Bookkeeper
 
 			{//must show date, description and brutto
 				Kind = "Inkomst",
-				Date = "Monday, January 1, 2017",
+				Date = "3/5/2017",
 				Description = "Dator till ITHS",
 				Type = "Försäljning (3000)",
-				Account = "Företagskonto (1930)",
+				Account = new Account
+				{
+					Name = "nazwa konta1",
+					Number = "12345671"
+				},// "Företagskonto (1930)",
 				Amount = 10000,
-				IsImportant = true,//to delete
+				TaxRate = new TaxRate
+				{
+					Value = 0.25
+				},//to delete
 				Path = "sebastianstrus/projects/"
 
 			});
 			entries.Add(new Entry
 			{
 				Kind = "Utgift",
-				Date = "Tuesday, January 2, 2017",
+				Date = "4/5/2017",
 				Description = "Mat på ICA",
 				Type = "Övriga egna uttag (2013)",
-				Account = "Egna insättningar (2018)",
+				Account = new Account
+				{
+					Name = "nazwa konta2",
+					Number = "12345672"
+				},//"Egna insättningar (2018)",
 				Amount = 200,
-				IsImportant = false,//to delete
+				TaxRate = new TaxRate
+				{
+					Value = 0.12
+				},//to delete
 				Path = "sebastianstrus/projects/"//to delete
 			});
 			entries.Add(new Entry
 			{
 				Kind = "Utgift",
-				Date = "Wednesday, January 3, 2017",
+				Date = "5/5/2017",
 				Description = "Ny domän",
 				Type = "Reklam och PR (5900)",
-				Account = "Företagskonto (1930)",
+				Account = new Account
+				{
+					Name = "nazwa konta3",
+					Number = "12345673"
+				}, //"Företagskonto (1930)",
 				Amount = 5000,
-				IsImportant = true,//to delete
+				TaxRate = new TaxRate
+				{
+					Value = 0.12
+				},//to delete
 				Path = "sebastianstrus/projects/"//to delete
 
 			});
 			//TODO: lists in spinnere
+
+
+
+			accountList = new List<Account>();
+			accountList.Add( new Account
+			{
+				Name = "nazwa1",
+				Number = "12345671"
+			});
+			accountList.Add(new Account
+			{
+				Name = "nazwa2",
+				Number = "12345672"
+			});
+			accountList.Add(new Account
+			{
+				Name = "nazwa3",
+				Number = "12345673"
+			});
+
+
+			taxRateList = new List<TaxRate>();
+			taxRateList.Add(new TaxRate
+			{
+				Value = 0.25,
+			});
+			taxRateList.Add(new TaxRate
+			{
+				Value = 0.12,
+			});
+			taxRateList.Add(new TaxRate
+			{
+				Value = 0.06,
+			});
+			taxRateList.Add(new TaxRate
+			{
+				Value = 0.0,
+			});
+
+
+
 
 		}
 

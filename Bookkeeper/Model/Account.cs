@@ -3,18 +3,13 @@ namespace Bookkeeper
 {
 	public class Account
 	{
-		string name;
-		string number;
+		public string Name { get; set; }
+		public string Number { get; set; }
 
-		public Account(string n, string nr)
-		{
-			name = n;
-			number = nr;
-		}
 
 		public override string ToString()
 		{
-			return string.Format("{0} ({1})", name, number.Substring(number.Length - 4));
+			return string.Format("{0} ({1})", Name, Number.Substring(Number.Length - 4));
 		}
 	}
 }

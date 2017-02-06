@@ -8,9 +8,9 @@ namespace Bookkeeper
 		public String Date { get; set; }
 		public String Description { get; set; }
 		public String Type { get; set; }
-		public String Account { get; set; }//class
+		public Account Account { get; set; }//class bylo String
 		public int Amount { get; set; }
-		public bool IsImportant { get; set; }//TaxRate
+		public TaxRate TaxRate { get; set; }//TaxRate
 		public String Path { get; set; } //Path
 
 

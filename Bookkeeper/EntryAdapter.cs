@@ -39,7 +39,7 @@ namespace Bookkeeper
 		{
 			View view = convertView ?? context.LayoutInflater.Inflate(Resource.Layout.entry_list_item, parent, false);
 
-			view.FindViewById<TextView>(Resource.Id.tvDate).Text = entries[position].Date;
+			view.FindViewById<TextView>(Resource.Id.tvDate).Text = entries[position].Date; //can change to Account + ""
 			view.FindViewById<TextView>(Resource.Id.tvTitle).Text = entries[position].Description;
 			view.FindViewById<TextView>(Resource.Id.tvAmount).Text = entries[position].Amount +"";
 			return view;

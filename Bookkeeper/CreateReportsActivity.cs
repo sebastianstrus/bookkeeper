@@ -40,9 +40,19 @@ namespace Bookkeeper
 
 		void DoIt(object sender, EventArgs e)
 		{
-			string name = "Företagskonto";
+			/*string name = "Företagskonto";
 			string number = "0123456789";
 			Console.WriteLine(string.Format("{0} ({1})", name, number.Substring(number.Length - 4)));
+			*/
+			Account account = new Account
+			{
+				Name = "nazwa",
+				Number = "12345678"
+			};
+			Console.WriteLine(account);
+			Console.WriteLine(account.Name);
+			Console.WriteLine(account.Number);
 		}
-}
+	}
+
 }

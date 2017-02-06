@@ -3,10 +3,11 @@ namespace Bookkeeper
 {
 	public class TaxRate
 	{
-		public TaxRate()
+		public double Value { get; set; }
+
+		public override string ToString()
 		{
+			return string.Format(Value * 100 + "%");
 		}
 	}
 }
-//double co mowi %, 0,   0,06   0,12   i 0,25
-// to string "" + number*100 + "%"

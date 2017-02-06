@@ -138,9 +138,10 @@
                 android:text="@string/total_amount_excl_tax"
                 android:layout_marginRight="10px" />
             <TextView
+                android:id="@+id/total_amount_excl_tax"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text=" ---" />
+                android:text="-" />
         </LinearLayout>
         <Button
             android:text="Ta bild"
