@@ -10,7 +10,7 @@
 	
 	<string name="typ_label">Typ: </string>
 	<string name="type">Typ</string>
-	<string-array name="type_income_array">
+	<!--<string-array name="type_income_array">
 		<item>Försäljning (3000)</item>
 		<item>Försäljning av tjänster (3040)</item>
 		<item>Rådgivning (5000)</item>
@@ -19,26 +19,26 @@
 		<item>Övriga egna uttag (2013)</item>
 		<item>Förbrukningsmaterial (2222)</item>
 		<item>Reklam och PR (5900)</item>
-	</string-array>
+	</string-array>-->
 
 	<string name="amount_incl_tax">Totalt belopp (inkl. moms): </string>
 	
 	<string name="account_label">Till/från konto: </string>
 	<string name="account">Konto</string>
-	<string-array name="account_array">
+	<!--<string-array name="account_array">
 		<item>Kassa (1910)</item>
 		<item>Företagskonto (1930)</item>
 		<item>Egna insättningar (2018)</item>
-	</string-array>
+	</string-array>-->
 
 	<string name="tax_rate_label">Moms: </string>
 	<string name="tax_rate">Moms</string>
-	<string-array name="tax_rate_array">
+	<!--<string-array name="tax_rate_array">
 		<item>25%</item>
 		<item>12%</item>
 		<item>6%</item>
 		<item>0%</item>
-	</string-array>
+	</string-array>-->
 	
 	<string name="total_amount_excl_tax">Total belopp (exkl. moms): </string>
 

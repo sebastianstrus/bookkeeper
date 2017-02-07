@@ -71,31 +71,6 @@ namespace Bookkeeper
 			}
 		}
 		
-		public partial class Array
-		{
-			
-			// aapt resource value: 0x7f0d0002
-			public const int account_array = 2131558402;
-			
-			// aapt resource value: 0x7f0d0003
-			public const int tax_rate_array = 2131558403;
-			
-			// aapt resource value: 0x7f0d0001
-			public const int type_expense_array = 2131558401;
-			
-			// aapt resource value: 0x7f0d0000
-			public const int type_income_array = 2131558400;
-			
-			static Array()
-			{
-				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
-			}
-			
-			private Array()
-			{
-			}
-		}
-		
 		public partial class Attribute
 		{
 			

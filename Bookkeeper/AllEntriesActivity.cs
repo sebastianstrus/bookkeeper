@@ -38,11 +38,11 @@ namespace Bookkeeper
 		{
 			if (rbImportantEntries.Checked)
 			{
-				entryList.Adapter = new EntryAdapter(this, BookkeeperMenager.Instance.ImportantEntries);
+				entryList.Adapter = new EntryAdapter(this, BookkeeperMenager.Instance.IncomeEntries);
 			}
 			else if (rbNotImportantEntries.Checked)
 			{
-				entryList.Adapter = new EntryAdapter(this, BookkeeperMenager.Instance.NotImportantEntries);
+				entryList.Adapter = new EntryAdapter(this, BookkeeperMenager.Instance.ExpenseEntries);
 			}
 			else
 			{

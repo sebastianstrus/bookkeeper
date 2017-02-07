@@ -20,12 +20,6 @@ public final class R {
         public static final int abc_slide_out_bottom=0x7f050008;
         public static final int abc_slide_out_top=0x7f050009;
     }
-    public static final class array {
-        public static final int account_array=0x7f0d0002;
-        public static final int tax_rate_array=0x7f0d0003;
-        public static final int type_expense_array=0x7f0d0001;
-        public static final int type_income_array=0x7f0d0000;
-    }
     public static final class attr {
         /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
@@ -1802,6 +1796,17 @@ containing a value of this type.
         public static final int account_label=0x7f06001d;
         public static final int account_report=0x7f060022;
         public static final int activity_new_entry=0x7f060016;
+        /** <string-array name="type_income_array">
+		<item>Försäljning (3000)</item>
+		<item>Försäljning av tjänster (3040)</item>
+		<item>Rådgivning (5000)</item>
+	</string-array>
+	<string-array name="type_expense_array">
+		<item>Övriga egna uttag (2013)</item>
+		<item>Förbrukningsmaterial (2222)</item>
+		<item>Reklam och PR (5900)</item>
+	</string-array>
+         */
         public static final int amount_incl_tax=0x7f06001c;
         public static final int app_name=0x7f060015;
         public static final int choose_date=0x7f060018;
@@ -1810,8 +1815,21 @@ containing a value of this type.
         public static final int hello=0x7f060014;
         public static final int status_bar_notification_info_overflow=0x7f060013;
         public static final int tax_rate=0x7f060020;
+        /** <string-array name="account_array">
+		<item>Kassa (1910)</item>
+		<item>Företagskonto (1930)</item>
+		<item>Egna insättningar (2018)</item>
+	</string-array>
+         */
         public static final int tax_rate_label=0x7f06001f;
         public static final int tax_report=0x7f060023;
+        /** <string-array name="tax_rate_array">
+		<item>25%</item>
+		<item>12%</item>
+		<item>6%</item>
+		<item>0%</item>
+	</string-array>
+         */
         public static final int total_amount_excl_tax=0x7f060021;
         public static final int typ_label=0x7f06001a;
         public static final int type=0x7f06001b;

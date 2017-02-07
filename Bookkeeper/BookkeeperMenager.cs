@@ -25,19 +25,13 @@ namespace Bookkeeper
 		private List<Entry> entries;
 		public List<Entry> Entries { get { return entries; } }
 
-		/*private List<string> typesList;
-		public List<string> TypesList { get { return typesList; } }*/
 		private string[] incomeTypeArray;
 		public string[] IncomeTypeArray { get { return incomeTypeArray; } }
-
 		private string[] expenseTypeArray;
 		public string[] ExpenseTypeArray { get { return expenseTypeArray; } }
 
-
-
-		public List<Entry> ImportantEntries { get { return entries.Where(b => b.TaxRate.Value == 0.25).ToList(); } }
-		//public List<Entry> NotImportantEntries { get { return entries.Where(b => !b.IsImportant).ToList(); } }
-		public List<Entry> NotImportantEntries { get { return entries.Where(b => b.TaxRate.Value == 0.12).ToList(); } }
+		public List<Entry> IncomeEntries { get { return entries.Where(b => b.Kind == "Inkomst").ToList(); } }//.Property.Value
+		public List<Entry> ExpenseEntries { get { return entries.Where(b => b.Kind == "Utgift").ToList(); } }
 
 		private List<Account> accountList;
 		public List<Account> AccountList { get { return accountList; } }
@@ -46,11 +40,25 @@ namespace Bookkeeper
 		private List<TaxRate> taxRateList;
 		public List<TaxRate> TaxRateList { get { return taxRateList; } }
 
-
-		//{ get {return (25, 12, 6, 0).ToList}};
-
 	private BookkeeperMenager()
 		{
+
+			// Type list to spinner
+			incomeTypeArray = new string[] { "Försäljning (3000)", "Försäljning av tjänster (3040)", "Rådgivning (5000)" };
+			expenseTypeArray = new string[] { "Övriga egna uttag (2013)", "Förbrukningsmaterial (2222)", "Reklam och PR (5900)" };
+
+			// account list to spinner
+			accountList = new List<Account>();
+			accountList.Add(new Account { Name = "Kassa", Number = "12345678901231910" });
+			accountList.Add(new Account { Name = "Företagskonto", Number = "12345678901231930" });
+			accountList.Add(new Account { Name = "Egna insättningar", Number = "12345678901232018" });
+
+			// tax rate list to spinner
+			taxRateList = new List<TaxRate>();
+			taxRateList.Add(new TaxRate { Value = 0.25, });
+			taxRateList.Add(new TaxRate { Value = 0.12, });
+			taxRateList.Add(new TaxRate { Value = 0.06, });
+			taxRateList.Add(new TaxRate { Value = 0.0, });
 
 			//Entry list
 			entries = new List<Entry>();
@@ -59,131 +67,47 @@ namespace Bookkeeper
 				Kind = "Inkomst",
 				Date = "3/5/2017",
 				Description = "Dator till ITHS",
-				Type = "Försäljning (3000)",
-				Account = new Account
-				{
-					Name = "nazwa konta1",
-					Number = "12345671"
-				},// "Företagskonto (1930)",
+				Type = incomeTypeArray[0],
+				Account = accountList[0],
 				Amount = 10000,
-				TaxRate = new TaxRate
-				{
-					Value = 0.25
-				},//to delete
-				Path = "sebastianstrus/projects/"
-
+				TaxRate = taxRateList[0]
+				//Path = "sebastianstrus/projects/" Kameran funkar inte
 			});
 			entries.Add(new Entry
 			{
 				Kind = "Utgift",
 				Date = "4/5/2017",
 				Description = "Mat på ICA",
-				Type = "Övriga egna uttag (2013)",
-				Account = new Account
-				{
-					Name = "nazwa konta2",
-					Number = "12345672"
-				},//"Egna insättningar (2018)",
-				Amount = 200,
-				TaxRate = new TaxRate
-				{
-					Value = 0.12
-				},//to delete
-				Path = "sebastianstrus/projects/"//to delete
+				Type = expenseTypeArray[0],
+				Account = accountList[1],
+				Amount = -200,
+				TaxRate = taxRateList[0]
+				//Path = "sebastianstrus/projects/" Kameran funkar inte
 			});
 			entries.Add(new Entry
 			{
 				Kind = "Utgift",
 				Date = "5/5/2017",
 				Description = "Ny domän",
-				Type = "Reklam och PR (5900)",
-				Account = new Account
-				{
-					Name = "nazwa konta3",
-					Number = "12345673"
-				}, //"Företagskonto (1930)",
-				Amount = 5000,
-				TaxRate = new TaxRate
-				{
-					Value = 0.12
-				},//to delete
-				Path = "sebastianstrus/projects/"//to delete
-
+				Type = expenseTypeArray[2],
+				Account = accountList[1],
+				Amount = -5000,
+				TaxRate = taxRateList[1]
+				//Path = "sebastianstrus/projects/" Kameran funkar inte
 			});
-
-			// Type list to spinner
-			incomeTypeArray = new string[] { "Försäljning (3000)", "Försäljning av tjänster (3040)", "Rådgivning (5000)" };
-			expenseTypeArray = new string[] { "Övriga egna uttag (2013)", "Förbrukningsmaterial (2222)", "Reklam och PR (5900)" };
-
-			// account list to spinner
-			accountList = new List<Account>();
-			accountList.Add( new Account
-			{
-				Name = "nazwa1",
-				Number = "12345671"
-			});
-			accountList.Add(new Account
-			{
-				Name = "nazwa2",
-				Number = "12345672"
-			});
-			accountList.Add(new Account
-			{
-				Name = "nazwa3",
-				Number = "12345673"
-			});
-
-			// tax rate list to spinner
-			taxRateList = new List<TaxRate>();
-			taxRateList.Add(new TaxRate
-			{
-				Value = 0.25,
-			});
-			taxRateList.Add(new TaxRate
-			{
-				Value = 0.12,
-			});
-			taxRateList.Add(new TaxRate
-			{
-				Value = 0.06,
-			});
-			taxRateList.Add(new TaxRate
-			{
-				Value = 0.0,
-			});
-
-
-
-
 		}
 
 		public static void AddEntry(Entry e)
 		{
-			Instance.entries.Add(e); //or instance hmmm...
+			Instance.entries.Add(e); //or instance.entries.Add(e); hmmm...
 		}
-
-
 
 		public string GetTaxReport()
 		{
 			return "abc";
-
 		}
 	}
 }
-
-/*
- *
-BookkeeperManager ska ha:
-● En lista för alla Entries som finns i systemet
-● En lista för alla möjliga inkomst-konton användaren kan välja
-● En lista för alla möjliga utgift-konton användaren kan välja
-● En lista för alla möjliga penga-konton användaren kan välja
-● En lista för alla möjliga skattesatser användaren kan välja
-● En metod AddEntry(Entry e) som lägger till ett Entry till systemet
-Notera att ni själva ska anropa properties/metoderna ovan (med undantag av Entries) när ni
-programmerar er “Ny händelse”­vy.
- **/
 
 /*
 Listor:

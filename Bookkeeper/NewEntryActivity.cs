@@ -24,30 +24,14 @@ namespace Bookkeeper
 	[Activity(Label = "New Entry")]
 	public class NewEntryActivity : Activity
 	{
-
-		TextView _dateDisplay;
-		Button _dateSelectButton;
+		
+		TextView _dateDisplay, tvTotalAmountExclTax;
+		Button _dateSelectButton, btnAddEntry;
 		ImageView _imageButton;
-
-		RadioButton rbIncome;
-		RadioButton rbExpense;
-
-		Spinner spinnerType;
-		ArrayAdapter adapterIncomeType;
-		ArrayAdapter adapterExpenseType;
-
-		Spinner spinnerAccount;
-		ArrayAdapter adapterAccount;
-
-		Spinner spinnerTaxRate;
-		ArrayAdapter adapterTaxRate;
-
-		EditText etDescription;
-		EditText etTotalAmountInclTax;
-
-		TextView tvTotalAmountExclTax;
-		Button btnAddEntry;
-
+		RadioButton rbIncome, rbExpense;
+		Spinner spinnerType, spinnerAccount, spinnerTaxRate;
+		ArrayAdapter adapterIncomeType, adapterExpenseType, adapterAccount, adapterTaxRate;
+		EditText etDescription, etTotalAmountInclTax;
 
 		protected override void OnCreate(Bundle savedInstanceState)
 		{
@@ -56,7 +40,6 @@ namespace Bookkeeper
 
 			// Spinners
 			spinnerType = FindViewById<Spinner>(Resource.Id.spinner_type);
-			// TODO: change adapter and move array to BookkeeperMenager if needed?
 			/*adapterIncomeType = ArrayAdapter.CreateFromResource(this, Resource.Array.type_income_array, 
 				Android.Resource.Layout.SimpleSpinnerItem);*/
 			adapterIncomeType = new ArrayAdapter(this, Android.Resource.Layout.SimpleSpinnerItem, BookkeeperMenager.Instance.IncomeTypeArray);
@@ -68,15 +51,11 @@ namespace Bookkeeper
 			spinnerType.Adapter = adapterIncomeType;
 
 			spinnerAccount = FindViewById<Spinner>(Resource.Id.spinner_account);
-			/*adapterAccount = ArrayAdapter.CreateFromResource(this, Resource.Array.account_array,
-				Android.Resource.Layout.SimpleSpinnerItem);*/
 			adapterAccount = new ArrayAdapter(this, Android.Resource.Layout.SimpleSpinnerItem, BookkeeperMenager.Instance.AccountList.ToList());
 			spinnerAccount.Adapter = adapterAccount;
 
 			spinnerTaxRate = FindViewById<Spinner>(Resource.Id.spinner_tax_rate);
 			spinnerTaxRate.ItemSelected += new EventHandler<AdapterView.ItemSelectedEventArgs> (spinner_TaxRateSelected);
-			/*adapterTaxRate = ArrayAdapter.CreateFromResource(this, Resource.Array.tax_rate_array,
-				Android.Resource.Layout.SimpleSpinnerItem);*/
 			adapterTaxRate = new ArrayAdapter(this, Android.Resource.Layout.SimpleSpinnerItem, BookkeeperMenager.Instance.TaxRateList.ToList());
 			spinnerTaxRate.Adapter = adapterTaxRate;
 
@@ -135,7 +114,6 @@ namespace Bookkeeper
 			if (etTotalAmountInclTax.Text != "")
 			{
 				tvTotalAmountExclTax.Text = Math.Round(double.Parse(etTotalAmountInclTax.Text.ToString()) / (1 + value), 2) + "";
-				Console.WriteLine("EditText value is: " + value);
 			}
 		}
 
@@ -150,7 +128,6 @@ namespace Bookkeeper
 			if (etTotalAmountInclTax.Text != "")
 			{
 				tvTotalAmountExclTax.Text = Math.Round(double.Parse(etTotalAmountInclTax.Text.ToString()) / (1 + value), 2) + "";
-				Console.WriteLine("EditText value is: " + value);
 			}
 		}
 
@@ -163,7 +140,6 @@ namespace Bookkeeper
 			if (etTotalAmountInclTax.Text != "")
 			{
 				tvTotalAmountExclTax.Text = Math.Round(double.Parse(etTotalAmountInclTax.Text.ToString()) / (1 + value), 2) + "";
-				Console.WriteLine("EditText value is: " + value);
 			}
 		}
 
@@ -189,7 +165,7 @@ namespace Bookkeeper
 		}
 
 		//========================================================================================
-		// check if can open camera
+		// Camera, check if can open camera
 		private bool IsThereAnAppToTakePictures()
 		{
 			Intent intent = new Intent(MediaStore.ActionImageCapture);
@@ -198,7 +174,7 @@ namespace Bookkeeper
 			return availableActivities != null && availableActivities.Count > 0;
 		}
 
-		// Create directory for pictures
+		// Camere, create directory for pictures
 		private void CreateDirectoryForPictures()
 		{
 			App._dir = new AFile(
@@ -210,23 +186,22 @@ namespace Bookkeeper
 			}
 		}
 
-		// Take picture
+		// Camera, Take picture
 		private void TakeAPicture(object sender, EventArgs eventArgs)
 		{
 			Intent intent = new Intent(MediaStore.ActionImageCapture);
 			App._file = new AFile(App._dir, String.Format("myPhoto_{0}.jpg", Guid.NewGuid()));
+
 			intent.PutExtra(MediaStore.ExtraOutput, AUri.FromFile(App._file));
-			Console.WriteLine("TakePicture clicked, then path = : " + App._file.Path);
+			Console.WriteLine("TakePicture clicked, path: " + App._file.Path);
 			StartActivityForResult(intent, 0);
 		}
 
-		// Create directory and save picture
+		// Camera, Create directory and save picture
 		protected override void OnActivityResult(int requestCode, Result resultCode, Intent data)
 		{
 			base.OnActivityResult(requestCode, resultCode, data);
-
-			Console.WriteLine("OnActivityResult clicked, then path = : " + App._file.Path);
-			// Make it available in the gallery
+						// Make it available in the gallery
 			Intent mediaScanIntent = new Intent(Intent.ActionMediaScannerScanFile);
 			AUri contentUri = AUri.FromFile(App._file);
 			mediaScanIntent.SetData(contentUri);
@@ -239,17 +214,21 @@ namespace Bookkeeper
 			int height = Resources.DisplayMetrics.HeightPixels;
 			int width = _imageButton.Height;
 			App.bitmap = App._file.Path.LoadAndResizeBitmap(width, height);
+
 			if (App.bitmap != null)
 			{
 				_imageButton.SetImageBitmap(App.bitmap);
 				App.bitmap = null;
+			}
+			else 
+			{
+				Console.WriteLine("Bitmap is empty"); // :/	
 			}
 
 			// Dispose of the Java side bitmap.
 			GC.Collect();
 		}
 		//========================================================================================
-
 		// Button Create Entry clicked
 		void AddEntry_OnClick(object sender, EventArgs e)
 		{
@@ -266,15 +245,17 @@ namespace Bookkeeper
 						Name = "nazwa konta",
 						Number = "12345678"
 					},//spinnerAccount.SelectedItem.ToString();
-					Amount = int.Parse(etTotalAmountInclTax.Text.ToString()),
-					TaxRate = new TaxRate
+					Amount = rbIncome.Checked ? int.Parse(etTotalAmountInclTax.Text.ToString()) : int.Parse('-'+ etTotalAmountInclTax.Text.ToString()),
+
+
+						TaxRate = new TaxRate
 					{
 						Value = 0.12
 					},
-					Path = "abc",
+					//Path = "...", kameran funkar inte...
+
 				};
 				BookkeeperMenager.AddEntry(temp);
-				Console.WriteLine("AddEntry clicked, then path = : " + App._file.Path);
 				Toast.MakeText(this, "Added", ToastLength.Short).Show();
 				Intent intent = new Intent(this, typeof(MainMenuActivity));
 				this.StartActivity(intent);
@@ -289,6 +270,9 @@ namespace Bookkeeper
 
 
 
+
+
+
 	//Camera
 	public static class App
 	{
@@ -296,6 +280,8 @@ namespace Bookkeeper
 		public static AFile _dir;
 		public static Bitmap bitmap;
 	}
+
+
 
 	//Camera
 	public static class BitmapHelpers
@@ -323,7 +309,6 @@ namespace Bookkeeper
 			options.InSampleSize = inSampleSize;
 			options.InJustDecodeBounds = false;
 			Bitmap resizedBitmap = BitmapFactory.DecodeFile(fileName, options);
-
 			return resizedBitmap;
 		}
 	}
