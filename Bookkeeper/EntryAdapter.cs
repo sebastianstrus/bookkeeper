@@ -41,7 +41,7 @@ namespace Bookkeeper
 
 			view.FindViewById<TextView>(Resource.Id.tvDate).Text = entries[position].Date; //can change to Account + ""
 			view.FindViewById<TextView>(Resource.Id.tvTitle).Text = entries[position].Description;
-			view.FindViewById<TextView>(Resource.Id.tvAmount).Text = entries[position].Amount +"";
+			view.FindViewById<TextView>(Resource.Id.tvAmount).Text = entries[position].Amount +"kr";
 			return view;
 		}
 	}

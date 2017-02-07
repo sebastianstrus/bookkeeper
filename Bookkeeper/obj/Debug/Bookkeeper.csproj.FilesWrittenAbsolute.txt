@@ -23,3 +23,5 @@
 /Users/sebastianstrus/Projects/Bookkeeper/Bookkeeper/obj/Debug/Bookkeeper.dll.mdb
 /Users/sebastianstrus/Projects/Bookkeeper/Bookkeeper/bin/Debug/Xamarin.Android.Support.v4.dll
 /Users/sebastianstrus/Projects/Bookkeeper/Bookkeeper/bin/Debug/Xamarin.Android.Support.v7.AppCompat.dll
+/Users/sebastianstrus/Projects/Bookkeeper/Bookkeeper/obj/Debug/res/layout/activity_tax_report.xml
+/Users/sebastianstrus/Projects/Bookkeeper/Bookkeeper/obj/Debug/res/layout/activity_account_report.xml

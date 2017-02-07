@@ -31,6 +31,7 @@ namespace Bookkeeper
 			rbAllEntries.Click += button_UpdateEntries;
 			rbImportantEntries.Click += button_UpdateEntries;
 			rbNotImportantEntries.Click += button_UpdateEntries;
+
 		}
 
 		private void button_UpdateEntries(object sender, EventArgs e)

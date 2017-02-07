@@ -20,15 +20,24 @@ namespace Bookkeeper
 			}
 		}
 
+
+
 		private List<Entry> entries;
 		public List<Entry> Entries { get { return entries; } }
+
+		/*private List<string> typesList;
+		public List<string> TypesList { get { return typesList; } }*/
+		private string[] incomeTypeArray;
+		public string[] IncomeTypeArray { get { return incomeTypeArray; } }
+
+		private string[] expenseTypeArray;
+		public string[] ExpenseTypeArray { get { return expenseTypeArray; } }
+
+
 
 		public List<Entry> ImportantEntries { get { return entries.Where(b => b.TaxRate.Value == 0.25).ToList(); } }
 		//public List<Entry> NotImportantEntries { get { return entries.Where(b => !b.IsImportant).ToList(); } }
 		public List<Entry> NotImportantEntries { get { return entries.Where(b => b.TaxRate.Value == 0.12).ToList(); } }
-
-		//public List<TaxRate> TaxRatesList;
-		//TaxRatesList.A
 
 		private List<Account> accountList;
 		public List<Account> AccountList { get { return accountList; } }
@@ -42,10 +51,10 @@ namespace Bookkeeper
 
 	private BookkeeperMenager()
 		{
+
+			//Entry list
 			entries = new List<Entry>();
-
 			entries.Add(new Entry//Kind, Date, Amount, IsImportant
-
 			{//must show date, description and brutto
 				Kind = "Inkomst",
 				Date = "3/5/2017",
@@ -101,10 +110,12 @@ namespace Bookkeeper
 				Path = "sebastianstrus/projects/"//to delete
 
 			});
-			//TODO: lists in spinnere
 
+			// Type list to spinner
+			incomeTypeArray = new string[] { "Försäljning (3000)", "Försäljning av tjänster (3040)", "Rådgivning (5000)" };
+			expenseTypeArray = new string[] { "Övriga egna uttag (2013)", "Förbrukningsmaterial (2222)", "Reklam och PR (5900)" };
 
-
+			// account list to spinner
 			accountList = new List<Account>();
 			accountList.Add( new Account
 			{
@@ -122,7 +133,7 @@ namespace Bookkeeper
 				Number = "12345673"
 			});
 
-
+			// tax rate list to spinner
 			taxRateList = new List<TaxRate>();
 			taxRateList.Add(new TaxRate
 			{
