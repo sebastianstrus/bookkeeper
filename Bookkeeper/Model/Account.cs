@@ -9,7 +9,7 @@ namespace Bookkeeper
 
 		public override string ToString()
 		{
-			return string.Format("{0} ({1})", Name, Number.Substring(Number.Length - 4));
+			return string.Format("{0} ({1})", Name, Number);
 		}
 	}
 }

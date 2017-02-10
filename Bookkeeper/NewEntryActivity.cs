@@ -24,7 +24,6 @@ namespace Bookkeeper
 	[Activity(Label = "New Entry")]
 	public class NewEntryActivity : Activity
 	{
-		
 		TextView _dateDisplay, tvTotalAmountExclTax;
 		Button _dateSelectButton, btnAddEntry;
 		ImageView _imageButton;
@@ -32,6 +31,8 @@ namespace Bookkeeper
 		Spinner spinnerType, spinnerAccount, spinnerTaxRate;
 		ArrayAdapter adapterIncomeType, adapterExpenseType, adapterAccount, adapterTaxRate;
 		EditText etDescription, etTotalAmountInclTax;
+		TaxRate currentTaxRate;
+		Account currentAccount;
 
 		protected override void OnCreate(Bundle savedInstanceState)
 		{
@@ -46,11 +47,13 @@ namespace Bookkeeper
 			/*adapterExpenseType = ArrayAdapter.CreateFromResource(this, Resource.Array.type_expense_array,
 				Android.Resource.Layout.SimpleSpinnerItem);*/
 			adapterExpenseType = new ArrayAdapter(this, Android.Resource.Layout.SimpleSpinnerItem, BookkeeperMenager.Instance.ExpenseTypeArray);
+
 			adapterIncomeType.SetDropDownViewResource(Android.Resource.Layout.SimpleSpinnerDropDownItem);
 			adapterExpenseType.SetDropDownViewResource(Android.Resource.Layout.SimpleSpinnerDropDownItem);
 			spinnerType.Adapter = adapterIncomeType;
 
 			spinnerAccount = FindViewById<Spinner>(Resource.Id.spinner_account);
+			spinnerAccount.ItemSelected += new EventHandler<AdapterView.ItemSelectedEventArgs>(spinner_AccountSelected);
 			adapterAccount = new ArrayAdapter(this, Android.Resource.Layout.SimpleSpinnerItem, BookkeeperMenager.Instance.AccountList.ToList());
 			spinnerAccount.Adapter = adapterAccount;
 
@@ -101,6 +104,7 @@ namespace Bookkeeper
 
 
 		}
+
 		//========================================================================================
 		//========================================================================================
 
@@ -117,7 +121,6 @@ namespace Bookkeeper
 			}
 		}
 
-
 		void etKeyPress(object sender, View.KeyEventArgs e)
 		{
 			e.Handled = false;
@@ -131,9 +134,16 @@ namespace Bookkeeper
 			}
 		}
 
+		void spinner_AccountSelected(object sender, AdapterView.ItemSelectedEventArgs e)
+		{
+			currentAccount = BookkeeperMenager.Instance.AccountList[e.Position];
+		}
+
 		// set total amount excl tax
 		private void spinner_TaxRateSelected(object sender, AdapterView.ItemSelectedEventArgs e)
-		{
+		{//or BookkeeperMenager.Instance.TaxRateList.ToList()
+			currentTaxRate = BookkeeperMenager.Instance.TaxRateList[e.Position];
+			Toast.MakeText(this, BookkeeperMenager.Instance.TaxRateList[e.Position].ToString(), ToastLength.Short).Show();
 			string temp = ((Spinner)sender).SelectedItem.ToString();
 			double value = double.Parse(temp.Substring(0, temp.Length - 1))/100; //t.ex. 0.12
 
@@ -142,7 +152,6 @@ namespace Bookkeeper
 				tvTotalAmountExclTax.Text = Math.Round(double.Parse(etTotalAmountInclTax.Text.ToString()) / (1 + value), 2) + "";
 			}
 		}
-
 
 		// RadioButtons clicked, change adapter for spinnerType
 		void RadioButtonIncomeClick(object sender, EventArgs e)
@@ -163,7 +172,6 @@ namespace Bookkeeper
 																	 });
 			frag.Show(FragmentManager, DatePickerFragment.TAG);
 		}
-
 		//========================================================================================
 		// Camera, check if can open camera
 		private bool IsThereAnAppToTakePictures()
@@ -173,7 +181,6 @@ namespace Bookkeeper
 				PackageManager.QueryIntentActivities(intent, PackageInfoFlags.MatchDefaultOnly);
 			return availableActivities != null && availableActivities.Count > 0;
 		}
-
 		// Camere, create directory for pictures
 		private void CreateDirectoryForPictures()
 		{
@@ -185,7 +192,6 @@ namespace Bookkeeper
 				App._dir.Mkdirs();
 			}
 		}
-
 		// Camera, Take picture
 		private void TakeAPicture(object sender, EventArgs eventArgs)
 		{
@@ -224,39 +230,33 @@ namespace Bookkeeper
 			{
 				Console.WriteLine("Bitmap is empty"); // :/	
 			}
-
 			// Dispose of the Java side bitmap.
 			GC.Collect();
 		}
 		//========================================================================================
-		// Button Create Entry clicked
+		// Button Add Entry clicked
 		void AddEntry_OnClick(object sender, EventArgs e)
 		{
 			if ((etDescription.Text != "") && (_dateDisplay.Text != "-") && (etTotalAmountInclTax.Text != "") )
 			{
+				// Create Entry
 				Entry temp = new Entry
 				{
-					Kind = rbIncome.Checked ? "Inkomst" : "Utgift",
+					IsIncome = rbIncome.Checked ? true : false,
 					Date = _dateDisplay.Text,
 					Description = etDescription.Text,
-					Type = spinnerType.SelectedItem.ToString(),
-					Account = new Account
-					{
-						Name = "nazwa konta",
-						Number = "12345678"
-					},//spinnerAccount.SelectedItem.ToString();
+					Type = spinnerType.SelectedItem.ToString(),// rbIncome.Checked ? list1 : list2, if make class
+					Account = currentAccount,
 					Amount = rbIncome.Checked ? int.Parse(etTotalAmountInclTax.Text.ToString()) : int.Parse('-'+ etTotalAmountInclTax.Text.ToString()),
-
-
-						TaxRate = new TaxRate
-					{
-						Value = 0.12
-					},
+					TaxRate = currentTaxRate,
 					//Path = "...", kameran funkar inte...
-
 				};
+
+				// add Entry
 				BookkeeperMenager.AddEntry(temp);
 				Toast.MakeText(this, "Added", ToastLength.Short).Show();
+
+				// Go to MainMenuActivity
 				Intent intent = new Intent(this, typeof(MainMenuActivity));
 				this.StartActivity(intent);
 			}
@@ -264,7 +264,6 @@ namespace Bookkeeper
 			{
 				Toast.MakeText(this, "Incorrect data", ToastLength.Short).Show();
 			}
-
 		}
 	}
 

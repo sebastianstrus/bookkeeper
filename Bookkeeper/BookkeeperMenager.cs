@@ -30,12 +30,11 @@ namespace Bookkeeper
 		private string[] expenseTypeArray;
 		public string[] ExpenseTypeArray { get { return expenseTypeArray; } }
 
-		public List<Entry> IncomeEntries { get { return entries.Where(b => b.Kind == "Inkomst").ToList(); } }//.Property.Value
-		public List<Entry> ExpenseEntries { get { return entries.Where(b => b.Kind == "Utgift").ToList(); } }
+		public List<Entry> IncomeEntries { get { return entries.Where(b => b.IsIncome).ToList(); } }//.Property.Value
+		public List<Entry> ExpenseEntries { get { return entries.Where(b => !b.IsIncome).ToList(); } }
 
 		private List<Account> accountList;
 		public List<Account> AccountList { get { return accountList; } }
-		// TODO: add nizej
 
 		private List<TaxRate> taxRateList;
 		public List<TaxRate> TaxRateList { get { return taxRateList; } }
@@ -49,9 +48,9 @@ namespace Bookkeeper
 
 			// account list to spinner
 			accountList = new List<Account>();
-			accountList.Add(new Account { Name = "Kassa", Number = "12345678901231910" });
-			accountList.Add(new Account { Name = "Företagskonto", Number = "12345678901231930" });
-			accountList.Add(new Account { Name = "Egna insättningar", Number = "12345678901232018" });
+			accountList.Add(new Account { Name = "Kassa", Number = "1910" });
+			accountList.Add(new Account { Name = "Företagskonto", Number = "1930" });
+			accountList.Add(new Account { Name = "Egna insättningar", Number = "2018" });
 
 			// tax rate list to spinner
 			taxRateList = new List<TaxRate>();
@@ -64,7 +63,7 @@ namespace Bookkeeper
 			entries = new List<Entry>();
 			entries.Add(new Entry//Kind, Date, Amount, IsImportant
 			{//must show date, description and brutto
-				Kind = "Inkomst",
+				IsIncome = true,
 				Date = "3/5/2017",
 				Description = "Dator till ITHS",
 				Type = incomeTypeArray[0],
@@ -75,7 +74,7 @@ namespace Bookkeeper
 			});
 			entries.Add(new Entry
 			{
-				Kind = "Utgift",
+				IsIncome = false,
 				Date = "4/5/2017",
 				Description = "Mat på ICA",
 				Type = expenseTypeArray[0],
@@ -86,7 +85,7 @@ namespace Bookkeeper
 			});
 			entries.Add(new Entry
 			{
-				Kind = "Utgift",
+				IsIncome = false,
 				Date = "5/5/2017",
 				Description = "Ny domän",
 				Type = expenseTypeArray[2],
