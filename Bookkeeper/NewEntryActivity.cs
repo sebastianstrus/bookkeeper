@@ -247,7 +247,8 @@ namespace Bookkeeper
 					Description = etDescription.Text,
 					Type = spinnerType.SelectedItem.ToString(),// rbIncome.Checked ? list1 : list2, if make class
 					Account = currentAccount,
-					Amount = rbIncome.Checked ? int.Parse(etTotalAmountInclTax.Text.ToString()) : int.Parse('-'+ etTotalAmountInclTax.Text.ToString()),
+					Amount = int.Parse(etTotalAmountInclTax.Text),
+					//Amount = rbIncome.Checked ? int.Parse(etTotalAmountInclTax.Text.ToString()) : int.Parse('-' + etTotalAmountInclTax.Text.ToString()),
 					TaxRate = currentTaxRate,
 					//Path = "...", kameran funkar inte...
 				};

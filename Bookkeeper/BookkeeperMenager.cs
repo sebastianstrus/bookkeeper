@@ -79,7 +79,7 @@ namespace Bookkeeper
 				Description = "Mat på ICA",
 				Type = expenseTypeArray[0],
 				Account = accountList[1],
-				Amount = -200,
+				Amount = 200,
 				TaxRate = taxRateList[0]
 				//Path = "sebastianstrus/projects/" Kameran funkar inte
 			});
@@ -90,7 +90,7 @@ namespace Bookkeeper
 				Description = "Ny domän",
 				Type = expenseTypeArray[2],
 				Account = accountList[1],
-				Amount = -5000,
+				Amount = 5000,
 				TaxRate = taxRateList[1]
 				//Path = "sebastianstrus/projects/" Kameran funkar inte
 			});
