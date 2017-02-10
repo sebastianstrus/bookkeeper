@@ -111,7 +111,7 @@ namespace Bookkeeper
 
 		/*private void setEntryData(int id)
 		{
-			Entry entry = new Entry(id);
+			Entry entry = new Entry(id); without new, 
 				// RadioButton
 				_dateDisplay.Text = entry.Date; //Datum
 			etDescription.Text = entry.Description;

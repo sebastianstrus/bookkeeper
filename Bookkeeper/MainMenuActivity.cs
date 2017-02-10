@@ -8,6 +8,10 @@ namespace Bookkeeper
 	[Activity(Label = "Bookkeeper", MainLauncher = true, Icon = "@mipmap/icon")]
 	public class MainMenuActivity : Activity
 	{
+		string path = System.Environment.GetFolderPath
+ (System.Environment.SpecialFolder.Personal);
+		SQLiteConnection db = new SQLiteConnection(path + @”\database.db”);
+		db.CreateTable<Person>();
 
 		private Button btnNewEntry;
 		private Button btnAllEntries;

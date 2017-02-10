@@ -1,11 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using SQLite;
+
 
 namespace Bookkeeper
 {
 	class BookkeeperMenager
 	{
+
 		private static BookkeeperMenager instance;
 
 		public static BookkeeperMenager Instance
