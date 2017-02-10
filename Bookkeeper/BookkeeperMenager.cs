@@ -48,9 +48,9 @@ namespace Bookkeeper
 
 			// account list to spinner
 			accountList = new List<Account>();
-			accountList.Add(new Account { Name = "Kassa", Number = "1910" });
-			accountList.Add(new Account { Name = "Företagskonto", Number = "1930" });
-			accountList.Add(new Account { Name = "Egna insättningar", Number = "2018" });
+			accountList.Add(new Account { Name = "Kassa", Number = 1910 });
+			accountList.Add(new Account { Name = "Företagskonto", Number = 1930 });
+			accountList.Add(new Account { Name = "Egna insättningar", Number = 2018 });
 
 			// tax rate list to spinner
 			taxRateList = new List<TaxRate>();

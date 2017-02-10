@@ -24,6 +24,7 @@ namespace Bookkeeper
 	[Activity(Label = "New Entry")]
 	public class NewEntryActivity : Activity
 	{
+		//int idEntryToEdit = -1;
 		TextView _dateDisplay, tvTotalAmountExclTax;
 		Button _dateSelectButton, btnAddEntry;
 		ImageView _imageButton;
@@ -107,6 +108,25 @@ namespace Bookkeeper
 
 		//========================================================================================
 		//========================================================================================
+
+		/*private void setEntryData(int id)
+		{
+			Entry entry = new Entry(id);
+				// RadioButton
+				_dateDisplay.Text = entry.Date; //Datum
+			etDescription.Text = entry.Description;
+			//Type
+			//Account
+			// Amount
+			//Moms
+			// total ex
+			// bild
+			//btnAddEntry.Text = "Save"
+
+			
+		}*/
+			
+
 
 		// set total amount excl tax
 		void etTextChanged(object sender, TextChangedEventArgs e)

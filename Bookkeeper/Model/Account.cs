@@ -4,7 +4,7 @@ namespace Bookkeeper
 	public class Account
 	{
 		public string Name { get; set; }
-		public string Number { get; set; }
+		public int Number { get; set; }
 
 
 		public override string ToString()
