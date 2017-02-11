@@ -46,7 +46,7 @@ namespace Bookkeeper
 
 
 
-		private string dbPath = System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal);
+		public string dbPath = System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal) + @"\database.db";
 
 		private BookkeeperMenager()
 		{
@@ -62,7 +62,7 @@ namespace Bookkeeper
 			Account mAccount2 = new Account { Name = "Företagskonto", Number = 1930, Type = "money" };
 			Account mAccount3 = new Account { Name = "Egna insättningar", Number = 2018, Type = "money" };
 
-			SQLiteConnection db = new SQLiteConnection(dbPath + @"\database.db");
+			SQLiteConnection db = new SQLiteConnection(dbPath);
 			db.CreateTable<Account>();
 			if (db.Table<Account>().ToList().Count() == 0)
 			{
@@ -149,11 +149,10 @@ namespace Bookkeeper
 
 		public static void AddEntry(Entry e)
 		{
-			SQLiteConnection db = new SQLiteConnection(Instance.dbPath + @"\database.db");
+			SQLiteConnection db = new SQLiteConnection(instance.dbPath + @"\database.db");
 			db.Insert(e);
 			instance.entries = db.Table<Entry>().ToList();
 
-			//Instance.entries.Add(e); //or instance.entries.Add(e); hmmm...
 		}
 
 		public string GetTaxReport()

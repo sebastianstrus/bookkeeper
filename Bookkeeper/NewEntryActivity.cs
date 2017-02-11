@@ -13,6 +13,7 @@ using Android.Runtime;
 using Android.Text;
 using Android.Views;
 using Android.Widget;
+using SQLite;
 
 using AEnvironment = Android.OS.Environment;
 using AFile = Java.IO.File;
@@ -34,13 +35,19 @@ namespace Bookkeeper
 		ArrayAdapter adapterIncomeType, adapterExpenseType, adapterAccount, adapterTaxRate;
 		EditText etDescription, etTotalAmountInclTax;
 		TaxRate currentTaxRate;
-		Account currentTypeAccount;
-		Account currentMoneyAccount;
+		Account currentTypeAccount, currentMoneyAccount;
 
 		protected override void OnCreate(Bundle savedInstanceState)
 		{
 			base.OnCreate(savedInstanceState);
 			SetContentView(Resource.Layout.activity_new_entry);
+
+			string entryId = Intent.GetStringExtra("ENTRY_ID") ?? "-1";
+			Console.WriteLine("EntryID to edit: " +entryId);
+			if (int.Parse(entryId) >= 0)
+			{
+				setEntryToEdit(int.Parse(entryId));
+			}
 
 			// Spinners
 			spinnerType = FindViewById<Spinner>(Resource.Id.spinner_type);
@@ -106,54 +113,42 @@ namespace Bookkeeper
 			etTotalAmountInclTax.TextChanged += etTextChanged;
 			etTotalAmountInclTax.KeyPress += etKeyPress;
 
-			/* // TODO: setData to edit
-			entryToEdit = db.get Entry from DB;
-			if (entryToEdit.IsIncome) {
-				rbIncome.Checked = true;
-			} else 
-			{
-				rbExpense.Checked = true;
-			}
-			_dateDisplay.Text = entryToEdit.Date;
-			etDescription.Text = entryToEdit.Description;
 
-					// spinner:
-					TypeID = currentTypeAccount.Number,//spinnerType.SelectedItem,//.ToString(),// rbIncome.Checked ? list1 : list2, if make class
-					
-					// spinner:
-					AccountID = currentMoneyAccount.Number,
-					
-					etTotalAmountInclTax.Text = entryToEdit.Amount // + "" // check first char '-'
-					TaxRateID = currentTaxRate.Id, //  set spinner
-					//Path = "...", kameran funkar inte...
-			btnAddEntry.Text = "Save";
-
-			  */
 
 
 		}
 
 		//========================================================================================
 		//========================================================================================
-
-		/*private void setEntryData(int id)
+		public void setEntryToEdit(int entryId)
 		{
-			Entry entry = new Entry(id); without new, 
-				// RadioButton
-				_dateDisplay.Text = entry.Date; //Datum
-			etDescription.Text = entry.Description;
-			//Type
-			//Account
-			// Amount
-			//Moms
-			// total ex
-			// bild
-			//btnAddEntry.Text = "Save"
+			SQLiteConnection db = new SQLiteConnection(BookkeeperMenager.Instance.dbPath);
+			Entry entryToEdit = db.Get<Entry>(entryId);//.Where(b => (b.Id == entryId)).ToList();
+			Console.WriteLine(entryToEdit); // this is ok
 
-			
-		}*/
-			
+			/*if (!entryToEdit.IsIncome)
+			{
+				rbIncome.Checked = true; //.Toggle();
+			}// Object reference not set to an instance of an object.
+			else
+			{
+				rbExpense.Checked = true;
+			}*/
+			//_dateDisplay.Text = entryToEdit.Date;
+			//etDescription.Text = entryToEdit.Description;
 
+			// spinner:
+			/*TypeID = currentTypeAccount.Number,//spinnerType.SelectedItem,//.ToString(),// rbIncome.Checked ? list1 : list2, if make class
+					
+					// spinner:
+					AccountID = currentMoneyAccount.Number,
+					
+					etTotalAmountInclTax.Text = entryToEdit.Amount // + "" // check first char '-'
+					TaxRateID = currentTaxRate.Id, //  set spinner
+					//Path = "...", kameran funkar inte...*/
+			btnAddEntry.Text = "Save";
+		}
+					
 
 		// set total amount excl tax
 		void etTextChanged(object sender, TextChangedEventArgs e)

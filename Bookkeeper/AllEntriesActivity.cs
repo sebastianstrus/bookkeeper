@@ -2,7 +2,7 @@
 using Android.Widget;
 using Android.OS;
 using System;
-using System.Reflection.Emit;
+
 
 namespace Bookkeeper
 {
@@ -24,6 +24,8 @@ namespace Bookkeeper
 			entryList = FindViewById<ListView>(Resource.Id.entry_list);
 			entryList.Adapter = new EntryAdapter(this, BookkeeperMenager.Instance.Entries);
 
+			// go to add entry onClick
+
 			rbAllEntries = FindViewById<RadioButton>(Resource.Id.rb_all_entries);
 			rbImportantEntries = FindViewById<RadioButton>(Resource.Id.rb_important_entries);
 			rbNotImportantEntries = FindViewById<RadioButton>(Resource.Id.rb_not_important_entries);
@@ -33,6 +35,8 @@ namespace Bookkeeper
 			rbNotImportantEntries.Click += button_UpdateEntries;
 
 		}
+
+
 
 		private void button_UpdateEntries(object sender, EventArgs e)
 		{
@@ -51,3 +55,20 @@ namespace Bookkeeper
 		}
 	}
 }
+
+
+
+/*
+ @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.add_category_item:
+                getActivity().getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.container, new NewCategoryFragment()).commit();
+                break;
+            default:
+                System.out.println("error inflating the menu");
+        }
+        return true;
+    }
+    */
