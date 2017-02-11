@@ -25,6 +25,7 @@ namespace Bookkeeper
 	public class NewEntryActivity : Activity
 	{
 		//int idEntryToEdit = -1;
+		//Entry entryToEdit;
 		TextView _dateDisplay, tvTotalAmountExclTax;
 		Button _dateSelectButton, btnAddEntry;
 		ImageView _imageButton;
@@ -33,7 +34,8 @@ namespace Bookkeeper
 		ArrayAdapter adapterIncomeType, adapterExpenseType, adapterAccount, adapterTaxRate;
 		EditText etDescription, etTotalAmountInclTax;
 		TaxRate currentTaxRate;
-		Account currentAccount;
+		Account currentTypeAccount;
+		Account currentMoneyAccount;
 
 		protected override void OnCreate(Bundle savedInstanceState)
 		{
@@ -42,24 +44,25 @@ namespace Bookkeeper
 
 			// Spinners
 			spinnerType = FindViewById<Spinner>(Resource.Id.spinner_type);
+			spinnerType.ItemSelected += new EventHandler<AdapterView.ItemSelectedEventArgs>(spinner_TypeAccountSelected);
 			/*adapterIncomeType = ArrayAdapter.CreateFromResource(this, Resource.Array.type_income_array, 
 				Android.Resource.Layout.SimpleSpinnerItem);*/
-			adapterIncomeType = new ArrayAdapter(this, Android.Resource.Layout.SimpleSpinnerItem, BookkeeperMenager.Instance.IncomeTypeArray);
+			adapterIncomeType = new ArrayAdapter(this, Android.Resource.Layout.SimpleSpinnerItem, BookkeeperMenager.Instance.IncomeTypeArray.ToList());
 			/*adapterExpenseType = ArrayAdapter.CreateFromResource(this, Resource.Array.type_expense_array,
 				Android.Resource.Layout.SimpleSpinnerItem);*/
-			adapterExpenseType = new ArrayAdapter(this, Android.Resource.Layout.SimpleSpinnerItem, BookkeeperMenager.Instance.ExpenseTypeArray);
+			adapterExpenseType = new ArrayAdapter(this, Android.Resource.Layout.SimpleSpinnerItem, BookkeeperMenager.Instance.ExpenseTypeArray.ToList());
 
 			adapterIncomeType.SetDropDownViewResource(Android.Resource.Layout.SimpleSpinnerDropDownItem);
 			adapterExpenseType.SetDropDownViewResource(Android.Resource.Layout.SimpleSpinnerDropDownItem);
 			spinnerType.Adapter = adapterIncomeType;
 
 			spinnerAccount = FindViewById<Spinner>(Resource.Id.spinner_account);
-			spinnerAccount.ItemSelected += new EventHandler<AdapterView.ItemSelectedEventArgs>(spinner_AccountSelected);
-			adapterAccount = new ArrayAdapter(this, Android.Resource.Layout.SimpleSpinnerItem, BookkeeperMenager.Instance.AccountList.ToList());
+			spinnerAccount.ItemSelected += new EventHandler<AdapterView.ItemSelectedEventArgs>(spinner_MoneyAccountSelected);
+			adapterAccount = new ArrayAdapter(this, Android.Resource.Layout.SimpleSpinnerItem, BookkeeperMenager.Instance.MoneyAccountList.ToList());
 			spinnerAccount.Adapter = adapterAccount;
 
 			spinnerTaxRate = FindViewById<Spinner>(Resource.Id.spinner_tax_rate);
-			spinnerTaxRate.ItemSelected += new EventHandler<AdapterView.ItemSelectedEventArgs> (spinner_TaxRateSelected);
+			spinnerTaxRate.ItemSelected += new EventHandler<AdapterView.ItemSelectedEventArgs>(spinner_TaxRateSelected);
 			adapterTaxRate = new ArrayAdapter(this, Android.Resource.Layout.SimpleSpinnerItem, BookkeeperMenager.Instance.TaxRateList.ToList());
 			spinnerTaxRate.Adapter = adapterTaxRate;
 
@@ -102,6 +105,30 @@ namespace Bookkeeper
 			//etTotalAmountInclTax.Text = "0";
 			etTotalAmountInclTax.TextChanged += etTextChanged;
 			etTotalAmountInclTax.KeyPress += etKeyPress;
+
+			/* // TODO: setData to edit
+			entryToEdit = db.get Entry from DB;
+			if (entryToEdit.IsIncome) {
+				rbIncome.Checked = true;
+			} else 
+			{
+				rbExpense.Checked = true;
+			}
+			_dateDisplay.Text = entryToEdit.Date;
+			etDescription.Text = entryToEdit.Description;
+
+					// spinner:
+					TypeID = currentTypeAccount.Number,//spinnerType.SelectedItem,//.ToString(),// rbIncome.Checked ? list1 : list2, if make class
+					
+					// spinner:
+					AccountID = currentMoneyAccount.Number,
+					
+					etTotalAmountInclTax.Text = entryToEdit.Amount // + "" // check first char '-'
+					TaxRateID = currentTaxRate.Id, //  set spinner
+					//Path = "...", kameran funkar inte...
+			btnAddEntry.Text = "Save";
+
+			  */
 
 
 		}
@@ -154,9 +181,14 @@ namespace Bookkeeper
 			}
 		}
 
-		void spinner_AccountSelected(object sender, AdapterView.ItemSelectedEventArgs e)
+		void spinner_TypeAccountSelected(object sender, AdapterView.ItemSelectedEventArgs e)
 		{
-			currentAccount = BookkeeperMenager.Instance.AccountList[e.Position];
+			currentTypeAccount = BookkeeperMenager.Instance.MoneyAccountList[e.Position];
+		}
+
+		void spinner_MoneyAccountSelected(object sender, AdapterView.ItemSelectedEventArgs e)
+		{
+			currentMoneyAccount = BookkeeperMenager.Instance.MoneyAccountList[e.Position];
 		}
 
 		// set total amount excl tax
@@ -265,11 +297,11 @@ namespace Bookkeeper
 					IsIncome = rbIncome.Checked ? true : false,
 					Date = _dateDisplay.Text,
 					Description = etDescription.Text,
-					Type = spinnerType.SelectedItem.ToString(),// rbIncome.Checked ? list1 : list2, if make class
-					Account = currentAccount,
+					TypeID = currentTypeAccount.Number,//spinnerType.SelectedItem,//.ToString(),// rbIncome.Checked ? list1 : list2, if make class
+					AccountID = currentMoneyAccount.Number,
 					Amount = int.Parse(etTotalAmountInclTax.Text),
 					//Amount = rbIncome.Checked ? int.Parse(etTotalAmountInclTax.Text.ToString()) : int.Parse('-' + etTotalAmountInclTax.Text.ToString()),
-					TaxRate = currentTaxRate,
+					TaxRateID = currentTaxRate.Id,
 					//Path = "...", kameran funkar inte...
 				};
 

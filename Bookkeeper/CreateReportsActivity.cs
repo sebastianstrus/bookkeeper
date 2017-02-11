@@ -32,6 +32,7 @@ namespace Bookkeeper
 				Intent intent = new Intent(this, typeof(AccountReportActivity));
 				this.StartActivity(intent);
 			};
+
 			btnTaxReport.Click += delegate 
 			{
 				Intent intent = new Intent(this, typeof(TaxReportActivity));

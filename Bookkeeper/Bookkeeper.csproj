@@ -70,6 +70,7 @@
     <Compile Include="BookkeeperMenager.cs" />
     <Compile Include="AccountReportActivity.cs" />
     <Compile Include="TaxReportActivity.cs" />
+    <Compile Include="Model\Type.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />

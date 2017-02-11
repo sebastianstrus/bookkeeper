@@ -1,18 +1,20 @@
-﻿using Android.App;
+﻿using System;
+using System.Collections.Generic;
+using Android.App;
 using Android.Content;
 using Android.OS;
 using Android.Widget;
+using SQLite;
 
 namespace Bookkeeper
 {
 	[Activity(Label = "Bookkeeper", MainLauncher = true, Icon = "@mipmap/icon")]
 	public class MainMenuActivity : Activity
 	{
-		string path = System.Environment.GetFolderPath
- (System.Environment.SpecialFolder.Personal);
-		SQLiteConnection db = new SQLiteConnection(path + @”\database.db”);
-		db.CreateTable<Person>();
+		public String dbPath;
 
+		//db.CreateTable<Person>();
+		//"A field initializer cannot reference th non-static field, method or property"
 		private Button btnNewEntry;
 		private Button btnAllEntries;
 		private Button btnCreateReports;

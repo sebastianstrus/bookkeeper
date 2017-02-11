@@ -1,27 +1,25 @@
 ﻿<Properties StartupConfiguration="{36E1F6EC-FE74-4C6F-B659-EF0668E14027}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="TaxReportActivity.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Model/Type.cs">
     <Files>
-      <File FileName="BookkeeperMenager.cs" Line="139" Column="23" />
+      <File FileName="BookkeeperMenager.cs" Line="152" Column="82" />
       <File FileName="Resources/values/Strings.xml" Line="31" Column="32" />
-      <File FileName="Model/Entry.cs" Line="16" Column="17" />
+      <File FileName="Model/Entry.cs" Line="15" Column="35" />
       <File FileName="EntryAdapter.cs" Line="49" Column="2" />
-      <File FileName="Model/Account.cs" Line="13" Column="36" />
-      <File FileName="Model/TaxRate.cs" Line="8" Column="4" />
-      <File FileName="AllEntriesActivity.cs" Line="1" Column="1" />
-      <File FileName="MainMenuActivity.cs" Line="15" Column="3" />
-      <File FileName="CreateReportsActivity.cs" Line="1" Column="1" />
-      <File FileName="AccountReportActivity.cs" Line="1" Column="1" />
-      <File FileName="DatePickerFragment.cs" Line="1" Column="1" />
-      <File FileName="packages.config" Line="1" Column="1" />
-      <File FileName="TaxReportActivity.cs" Line="1" Column="1" />
+      <File FileName="Model/Account.cs" Line="10" Column="34" />
+      <File FileName="Model/TaxRate.cs" Line="19" Column="1" />
+      <File FileName="AllEntriesActivity.cs" Line="25" Column="81" />
+      <File FileName="MainMenuActivity.cs" Line="27" Column="4" />
+      <File FileName="NewEntryActivity.cs" Line="117" Column="4" />
+      <File FileName="Model/Type.cs" Line="7" Column="4" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="Bookkeeper" expanded="True">
             <Node name="Bookkeeper" expanded="True">
-              <Node name="Model" expanded="True" />
-              <Node name="TaxReportActivity.cs" selected="True" />
+              <Node name="Model" expanded="True">
+                <Node name="Type.cs" selected="True" />
+              </Node>
             </Node>
           </Node>
         </State>

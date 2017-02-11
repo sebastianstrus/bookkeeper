@@ -20,12 +20,6 @@ public final class R {
         public static int abc_slide_out_bottom=0x7f050008;
         public static int abc_slide_out_top=0x7f050009;
     }
-    public static final class array {
-        public static int account_array=0x7f0d0002;
-        public static int tax_rate_array=0x7f0d0003;
-        public static int type_expense_array=0x7f0d0001;
-        public static int type_income_array=0x7f0d0000;
-    }
     public static final class attr {
         /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
@@ -1755,23 +1749,25 @@ containing a value of this type.
         public static int abc_search_dropdown_item_icons_2line=0x7f040016;
         public static int abc_search_view=0x7f040017;
         public static int abc_select_dialog_material=0x7f040018;
-        public static int activity_all_entries=0x7f040019;
-        public static int activity_create_reports=0x7f04001a;
-        public static int activity_main_menu=0x7f04001b;
-        public static int activity_new_entry=0x7f04001c;
-        public static int entry_list_item=0x7f04001d;
-        public static int notification_media_action=0x7f04001e;
-        public static int notification_media_cancel_action=0x7f04001f;
-        public static int notification_template_big_media=0x7f040020;
-        public static int notification_template_big_media_narrow=0x7f040021;
-        public static int notification_template_lines=0x7f040022;
-        public static int notification_template_media=0x7f040023;
-        public static int notification_template_part_chronometer=0x7f040024;
-        public static int notification_template_part_time=0x7f040025;
-        public static int select_dialog_item_material=0x7f040026;
-        public static int select_dialog_multichoice_material=0x7f040027;
-        public static int select_dialog_singlechoice_material=0x7f040028;
-        public static int support_simple_spinner_dropdown_item=0x7f040029;
+        public static int activity_account_report=0x7f040019;
+        public static int activity_all_entries=0x7f04001a;
+        public static int activity_create_reports=0x7f04001b;
+        public static int activity_main_menu=0x7f04001c;
+        public static int activity_new_entry=0x7f04001d;
+        public static int activity_tax_report=0x7f04001e;
+        public static int entry_list_item=0x7f04001f;
+        public static int notification_media_action=0x7f040020;
+        public static int notification_media_cancel_action=0x7f040021;
+        public static int notification_template_big_media=0x7f040022;
+        public static int notification_template_big_media_narrow=0x7f040023;
+        public static int notification_template_lines=0x7f040024;
+        public static int notification_template_media=0x7f040025;
+        public static int notification_template_part_chronometer=0x7f040026;
+        public static int notification_template_part_time=0x7f040027;
+        public static int select_dialog_item_material=0x7f040028;
+        public static int select_dialog_multichoice_material=0x7f040029;
+        public static int select_dialog_singlechoice_material=0x7f04002a;
+        public static int support_simple_spinner_dropdown_item=0x7f04002b;
     }
     public static final class mipmap {
         public static int icon=0x7f030000;
@@ -1800,6 +1796,17 @@ containing a value of this type.
         public static int account_label=0x7f06001d;
         public static int account_report=0x7f060022;
         public static int activity_new_entry=0x7f060016;
+        /** <string-array name="type_income_array">
+		<item>Försäljning (3000)</item>
+		<item>Försäljning av tjänster (3040)</item>
+		<item>Rådgivning (5000)</item>
+	</string-array>
+	<string-array name="type_expense_array">
+		<item>Övriga egna uttag (2013)</item>
+		<item>Förbrukningsmaterial (2222)</item>
+		<item>Reklam och PR (5900)</item>
+	</string-array>
+         */
         public static int amount_incl_tax=0x7f06001c;
         public static int app_name=0x7f060015;
         public static int choose_date=0x7f060018;
@@ -1808,8 +1815,21 @@ containing a value of this type.
         public static int hello=0x7f060014;
         public static int status_bar_notification_info_overflow=0x7f060013;
         public static int tax_rate=0x7f060020;
+        /** <string-array name="account_array">
+		<item>Kassa (1910)</item>
+		<item>Företagskonto (1930)</item>
+		<item>Egna insättningar (2018)</item>
+	</string-array>
+         */
         public static int tax_rate_label=0x7f06001f;
         public static int tax_report=0x7f060023;
+        /** <string-array name="tax_rate_array">
+		<item>25%</item>
+		<item>12%</item>
+		<item>6%</item>
+		<item>0%</item>
+	</string-array>
+         */
         public static int total_amount_excl_tax=0x7f060021;
         public static int typ_label=0x7f06001a;
         public static int type=0x7f06001b;

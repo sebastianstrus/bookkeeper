@@ -17,91 +17,143 @@ namespace Bookkeeper
 			{
 				if (instance == null)
 				{
+
 					instance = new BookkeeperMenager();
 				}
 				return instance;
 			}
 		}
 
-
-
 		private List<Entry> entries;
 		public List<Entry> Entries { get { return entries; } }
 
-		private string[] incomeTypeArray;
-		public string[] IncomeTypeArray { get { return incomeTypeArray; } }
-		private string[] expenseTypeArray;
-		public string[] ExpenseTypeArray { get { return expenseTypeArray; } }
+		private List<Account> incomeAccountList;
+		public List<Account> IncomeTypeArray { get { return incomeAccountList; } }
+		private List<Account> expenseAccountList;
+		public List<Account> ExpenseTypeArray { get { return expenseAccountList; } }
 
 		public List<Entry> IncomeEntries { get { return entries.Where(b => b.IsIncome).ToList(); } }//.Property.Value
 		public List<Entry> ExpenseEntries { get { return entries.Where(b => !b.IsIncome).ToList(); } }
 
-		private List<Account> accountList;
-		public List<Account> AccountList { get { return accountList; } }
+		private List<Account> moneyAccountList;
+		public List<Account> MoneyAccountList { get { return moneyAccountList; } }
 
 		private List<TaxRate> taxRateList;
 		public List<TaxRate> TaxRateList { get { return taxRateList; } }
 
-	private BookkeeperMenager()
+		private List<Account> accountList;
+		public List<Account> AccountList { get { return accountList; } }
+
+
+
+		private string dbPath = System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal);
+
+		private BookkeeperMenager()
 		{
+			Account inAccount1 = new Account { Name = "Försäljning", Number = 3000, Type = "income" };
+			Account inAccount2 = new Account { Name = "Försäljning av tjänster", Number = 3040, Type = "income" };
+			Account inAccount3 = new Account { Name = "Rådgivning", Number = 5000, Type = "income" };
 
-			// Type list to spinner
-			incomeTypeArray = new string[] { "Försäljning (3000)", "Försäljning av tjänster (3040)", "Rådgivning (5000)" };
-			expenseTypeArray = new string[] { "Övriga egna uttag (2013)", "Förbrukningsmaterial (2222)", "Reklam och PR (5900)" };
+			Account exAccount1 = new Account { Name = "Övriga egna uttag", Number = 2013, Type = "expense" };
+			Account exAccount2 = new Account { Name = "Förbrukningsmaterial", Number = 2222, Type = "expense" };
+			Account exAccount3 = new Account { Name = "Reklam och PR", Number = 5900, Type = "expense" };
 
-			// account list to spinner
-			accountList = new List<Account>();
-			accountList.Add(new Account { Name = "Kassa", Number = 1910 });
-			accountList.Add(new Account { Name = "Företagskonto", Number = 1930 });
-			accountList.Add(new Account { Name = "Egna insättningar", Number = 2018 });
+			Account mAccount1 = new Account { Name = "Kassa", Number = 1910, Type = "money" };
+			Account mAccount2 = new Account { Name = "Företagskonto", Number = 1930, Type = "money" };
+			Account mAccount3 = new Account { Name = "Egna insättningar", Number = 2018, Type = "money" };
+
+			SQLiteConnection db = new SQLiteConnection(dbPath + @"\database.db");
+			db.CreateTable<Account>();
+			if (db.Table<Account>().ToList().Count() == 0)
+			{
+				db.Insert(inAccount1);
+				db.Insert(inAccount2);
+				db.Insert(inAccount3);
+
+				db.Insert(exAccount1);
+				db.Insert(exAccount2);
+				db.Insert(exAccount3);
+
+				db.Insert(mAccount1);
+				db.Insert(mAccount2);
+				db.Insert(mAccount3);
+			}
+
+			accountList = db.Table<Account>().ToList();
+
+			incomeAccountList = db.Table<Account>().Where(a => a.Type == "income").ToList();
+			expenseAccountList = db.Table<Account>().Where(a => a.Type == "expense").ToList();
+			moneyAccountList = db.Table<Account>().Where(a => a.Type == "money").ToList();
+
+
+			//SQLiteConnection db = new SQLiteConnection(dbPath + @"\database.db");
+			db.CreateTable<TaxRate>();
+			db.DeleteAll<TaxRate>();
+			TaxRate tr1 = new TaxRate() { Value = 0.25, };
+			TaxRate tr2 = new TaxRate { Value = 0.12, };
+			TaxRate tr3 = new TaxRate { Value = 0.06, };
+			TaxRate tr4 = new TaxRate { Value = 0.0, };
+
+			if (db.Table<TaxRate>().ToList().Count() == 0)
+			{
+				db.Insert(tr1);
+				db.Insert(tr2);
+				db.Insert(tr3);
+				db.Insert(tr4);
+			}
+
 
 			// tax rate list to spinner
-			taxRateList = new List<TaxRate>();
-			taxRateList.Add(new TaxRate { Value = 0.25, });
-			taxRateList.Add(new TaxRate { Value = 0.12, });
-			taxRateList.Add(new TaxRate { Value = 0.06, });
-			taxRateList.Add(new TaxRate { Value = 0.0, });
+			taxRateList = db.Table<TaxRate>().ToList();
 
-			//Entry list
-			entries = new List<Entry>();
-			entries.Add(new Entry//Kind, Date, Amount, IsImportant
-			{//must show date, description and brutto
-				IsIncome = true,
-				Date = "3/5/2017",
-				Description = "Dator till ITHS",
-				Type = incomeTypeArray[0],
-				Account = accountList[0],
-				Amount = 10000,
-				TaxRate = taxRateList[0]
-				//Path = "sebastianstrus/projects/" Kameran funkar inte
-			});
-			entries.Add(new Entry
+			db.CreateTable<Entry>();
+			if (db.Table<Entry>().ToList().Count() == 0)
 			{
-				IsIncome = false,
-				Date = "4/5/2017",
-				Description = "Mat på ICA",
-				Type = expenseTypeArray[0],
-				Account = accountList[1],
-				Amount = 200,
-				TaxRate = taxRateList[0]
-				//Path = "sebastianstrus/projects/" Kameran funkar inte
-			});
-			entries.Add(new Entry
-			{
-				IsIncome = false,
-				Date = "5/5/2017",
-				Description = "Ny domän",
-				Type = expenseTypeArray[2],
-				Account = accountList[1],
-				Amount = 5000,
-				TaxRate = taxRateList[1]
-				//Path = "sebastianstrus/projects/" Kameran funkar inte
-			});
+				db.Insert(new Entry()
+				{
+					IsIncome = true,
+					Date = "3/5/2017",
+					Description = "Dator till ITHS",
+					TypeID = inAccount1.Number,
+					AccountID = mAccount1.Number,
+					Amount = 10000,
+					TaxRateID = tr1.Id
+					//Path = "sebastianstrus/projects/" Kameran funkar inte
+				});
+				db.Insert(new Entry
+				{
+					IsIncome = false,
+					Date = "4/5/2017",
+					Description = "Mat på ICA",
+					TypeID = exAccount1.Number,
+					AccountID = mAccount2.Number,
+					Amount = 200,
+					TaxRateID = tr2.Id
+					//Path = "sebastianstrus/projects/" Kameran funkar inte
+				});
+				db.Insert(new Entry
+				{
+					IsIncome = false,
+					Date = "5/5/2017",
+					Description = "Ny domän",
+					TypeID = exAccount3.Number,
+					AccountID = mAccount2.Number,
+					Amount = 5000,
+					TaxRateID = tr3.Id
+					//Path = "sebastianstrus/projects/" Kameran funkar inte
+				});
+			}
+			entries = db.Table<Entry>().ToList();
+
 		}
 
 		public static void AddEntry(Entry e)
 		{
-			Instance.entries.Add(e); //or instance.entries.Add(e); hmmm...
+			SQLiteConnection db = new SQLiteConnection(Instance.dbPath + @"\database.db");
+			db.Insert(e);
+			instance.entries = db.Table<Entry>().ToList();
+
+			//Instance.entries.Add(e); //or instance.entries.Add(e); hmmm...
 		}
 
 		public string GetTaxReport()
@@ -160,6 +212,7 @@ Checklista del 2
 - Tänk på: hur ska man skilja olika Accounts från varandra?
 - Förändra er BookkeperManager
 - Ska inte längre lagra informationen i listor, utan i databas-tabeller
+TODO:
 - Konstruktor: skapa upp tabeller om de inte redan finns, och fyll
 XxxAccounts/TaxRates med information om de är tomma
 - Entries, XxxAccounts, TaxRates: gör ett query på respektive tabell, och
