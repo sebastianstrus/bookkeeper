@@ -10,10 +10,6 @@ Bookkeeper.MainMenuActivity, Bookkeeper;md5678b55b847118b97b77ab09e3bf8bf02.Main
 Bookkeeper.MainMenuActivity, Bookkeeper, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md5678b55b847118b97b77ab09e3bf8bf02.MainMenuActivity
 Bookkeeper.MainMenuActivity;md5678b55b847118b97b77ab09e3bf8bf02.MainMenuActivity
 bookkeeper.MainMenuActivity;md5678b55b847118b97b77ab09e3bf8bf02.MainMenuActivity
-Bookkeeper.NewEntryActivity, Bookkeeper;md5678b55b847118b97b77ab09e3bf8bf02.NewEntryActivity
-Bookkeeper.NewEntryActivity, Bookkeeper, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md5678b55b847118b97b77ab09e3bf8bf02.NewEntryActivity
-Bookkeeper.NewEntryActivity;md5678b55b847118b97b77ab09e3bf8bf02.NewEntryActivity
-bookkeeper.NewEntryActivity;md5678b55b847118b97b77ab09e3bf8bf02.NewEntryActivity
 Bookkeeper.DatePickerFragment, Bookkeeper;md5678b55b847118b97b77ab09e3bf8bf02.DatePickerFragment
 Bookkeeper.DatePickerFragment, Bookkeeper, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md5678b55b847118b97b77ab09e3bf8bf02.DatePickerFragment
 Bookkeeper.DatePickerFragment;md5678b55b847118b97b77ab09e3bf8bf02.DatePickerFragment
@@ -30,6 +26,10 @@ Bookkeeper.TaxReportActivity, Bookkeeper;md5678b55b847118b97b77ab09e3bf8bf02.Tax
 Bookkeeper.TaxReportActivity, Bookkeeper, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md5678b55b847118b97b77ab09e3bf8bf02.TaxReportActivity
 Bookkeeper.TaxReportActivity;md5678b55b847118b97b77ab09e3bf8bf02.TaxReportActivity
 bookkeeper.TaxReportActivity;md5678b55b847118b97b77ab09e3bf8bf02.TaxReportActivity
+Bookkeeper.NewEntryActivity, Bookkeeper;md5678b55b847118b97b77ab09e3bf8bf02.NewEntryActivity
+Bookkeeper.NewEntryActivity, Bookkeeper, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md5678b55b847118b97b77ab09e3bf8bf02.NewEntryActivity
+Bookkeeper.NewEntryActivity;md5678b55b847118b97b77ab09e3bf8bf02.NewEntryActivity
+bookkeeper.NewEntryActivity;md5678b55b847118b97b77ab09e3bf8bf02.NewEntryActivity
 Android.Support.V4.View.ViewPager/IOnPageChangeListenerImplementor, Xamarin.Android.Support.v4;mono.android.support.v4.view.ViewPager_OnPageChangeListenerImplementor
 Android.Support.V4.View.ViewPager+IOnPageChangeListenerImplementor, Xamarin.Android.Support.v4, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;mono.android.support.v4.view.ViewPager_OnPageChangeListenerImplementor
 Android.Support.V4.View.ViewPager.IOnPageChangeListenerImplementor;mono.android.support.v4.view.ViewPager_OnPageChangeListenerImplementor

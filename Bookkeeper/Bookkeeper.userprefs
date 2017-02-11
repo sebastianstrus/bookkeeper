@@ -1,35 +1,22 @@
 ﻿<Properties StartupConfiguration="{36E1F6EC-FE74-4C6F-B659-EF0668E14027}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Model/Type.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="NewEntryActivity.cs">
     <Files>
-      <File FileName="BookkeeperMenager.cs" Line="152" Column="82" />
+      <File FileName="BookkeeperMenager.cs" Line="37" Column="3" />
       <File FileName="Resources/values/Strings.xml" Line="31" Column="32" />
-      <File FileName="Model/Entry.cs" Line="15" Column="35" />
-      <File FileName="EntryAdapter.cs" Line="49" Column="2" />
-      <File FileName="Model/Account.cs" Line="10" Column="34" />
+      <File FileName="Model/Entry.cs" Line="25" Column="50" />
+      <File FileName="EntryAdapter.cs" Line="40" Column="32" />
+      <File FileName="Model/Account.cs" Line="14" Column="3" />
       <File FileName="Model/TaxRate.cs" Line="19" Column="1" />
-      <File FileName="AllEntriesActivity.cs" Line="25" Column="81" />
-      <File FileName="MainMenuActivity.cs" Line="27" Column="4" />
-      <File FileName="NewEntryActivity.cs" Line="117" Column="4" />
+      <File FileName="AllEntriesActivity.cs" Line="5" Column="1" />
+      <File FileName="MainMenuActivity.cs" Line="39" Column="8" />
+      <File FileName="NewEntryActivity.cs" Line="23" Column="34" />
       <File FileName="Model/Type.cs" Line="7" Column="4" />
     </Files>
-    <Pads>
-      <Pad Id="ProjectPad">
-        <State name="__root__">
-          <Node name="Bookkeeper" expanded="True">
-            <Node name="Bookkeeper" expanded="True">
-              <Node name="Model" expanded="True">
-                <Node name="Type.cs" selected="True" />
-              </Node>
-            </Node>
-          </Node>
-        </State>
-      </Pad>
-    </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <MonoDevelop.Ide.ItemProperties.Bookkeeper PreferredExecutionTarget="Android.Android_Acc_Copy" />
+  <MonoDevelop.Ide.ItemProperties.Bookkeeper PreferredExecutionTarget="Android.Nexus_5_API_25" />
 </Properties>

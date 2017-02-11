@@ -8,7 +8,6 @@
     <OutputType>Library</OutputType>
     <RootNamespace>Bookkeeper</RootNamespace>
     <AssemblyName>Bookkeeper</AssemblyName>
-    <TargetFrameworkVersion>v7.0</TargetFrameworkVersion>
     <AndroidApplication>True</AndroidApplication>
     <AndroidResgenFile>Resources\Resource.designer.cs</AndroidResgenFile>
     <AndroidResgenClass>Resource</AndroidResgenClass>
@@ -16,6 +15,7 @@
     <MonoAndroidResourcePrefix>Resources</MonoAndroidResourcePrefix>
     <MonoAndroidAssetsPrefix>Assets</MonoAndroidAssetsPrefix>
     <AndroidUseLatestPlatformSdk>true</AndroidUseLatestPlatformSdk>
+    <TargetFrameworkVersion>v4.0.3</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -62,7 +62,6 @@
     <Compile Include="Model\Entry.cs" />
     <Compile Include="EntryAdapter.cs" />
     <Compile Include="MainMenuActivity.cs" />
-    <Compile Include="NewEntryActivity.cs" />
     <Compile Include="DatePickerFragment.cs" />
     <Compile Include="Model\Account.cs" />
     <Compile Include="Model\TaxRate.cs" />
@@ -71,6 +70,7 @@
     <Compile Include="AccountReportActivity.cs" />
     <Compile Include="TaxReportActivity.cs" />
     <Compile Include="Model\Type.cs" />
+    <Compile Include="NewEntryActivity.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />

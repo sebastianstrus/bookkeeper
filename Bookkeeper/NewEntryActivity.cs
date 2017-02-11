@@ -13,6 +13,7 @@ using Android.Runtime;
 using Android.Text;
 using Android.Views;
 using Android.Widget;
+
 using SQLite;
 
 using AEnvironment = Android.OS.Environment;
@@ -43,7 +44,7 @@ namespace Bookkeeper
 			SetContentView(Resource.Layout.activity_new_entry);
 
 			string entryId = Intent.GetStringExtra("ENTRY_ID") ?? "-1";
-			Console.WriteLine("EntryID to edit: " +entryId);
+			Console.WriteLine("EntryID to edit: " + entryId);
 			if (int.Parse(entryId) >= 0)
 			{
 				setEntryToEdit(int.Parse(entryId));
@@ -120,7 +121,7 @@ namespace Bookkeeper
 
 		//========================================================================================
 		//========================================================================================
-		public void setEntryToEdit(int entryId)
+		private void setEntryToEdit(int entryId)
 		{
 			SQLiteConnection db = new SQLiteConnection(BookkeeperMenager.Instance.dbPath);
 			Entry entryToEdit = db.Get<Entry>(entryId);//.Where(b => (b.Id == entryId)).ToList();
@@ -146,9 +147,11 @@ namespace Bookkeeper
 					etTotalAmountInclTax.Text = entryToEdit.Amount // + "" // check first char '-'
 					TaxRateID = currentTaxRate.Id, //  set spinner
 					//Path = "...", kameran funkar inte...*/
-			btnAddEntry.Text = "Save";
+			String a = btnAddEntry.Text;
+			Console.WriteLine(a);
+			//btnAddEntry.Text = Text = "Save";
 		}
-					
+
 
 		// set total amount excl tax
 		void etTextChanged(object sender, TextChangedEventArgs e)
@@ -192,7 +195,7 @@ namespace Bookkeeper
 			currentTaxRate = BookkeeperMenager.Instance.TaxRateList[e.Position];
 			Toast.MakeText(this, BookkeeperMenager.Instance.TaxRateList[e.Position].ToString(), ToastLength.Short).Show();
 			string temp = ((Spinner)sender).SelectedItem.ToString();
-			double value = double.Parse(temp.Substring(0, temp.Length - 1))/100; //t.ex. 0.12
+			double value = double.Parse(temp.Substring(0, temp.Length - 1)) / 100; //t.ex. 0.12
 
 			if (etTotalAmountInclTax.Text != "")
 			{
@@ -215,7 +218,7 @@ namespace Bookkeeper
 		{
 			DatePickerFragment frag = DatePickerFragment.NewInstance(delegate (DateTime time)
 																	 {
-				_dateDisplay.Text = time.ToShortDateString();
+																		 _dateDisplay.Text = time.ToShortDateString();
 																	 });
 			frag.Show(FragmentManager, DatePickerFragment.TAG);
 		}
@@ -254,7 +257,7 @@ namespace Bookkeeper
 		protected override void OnActivityResult(int requestCode, Result resultCode, Intent data)
 		{
 			base.OnActivityResult(requestCode, resultCode, data);
-						// Make it available in the gallery
+			// Make it available in the gallery
 			Intent mediaScanIntent = new Intent(Intent.ActionMediaScannerScanFile);
 			AUri contentUri = AUri.FromFile(App._file);
 			mediaScanIntent.SetData(contentUri);
@@ -273,7 +276,7 @@ namespace Bookkeeper
 				_imageButton.SetImageBitmap(App.bitmap);
 				App.bitmap = null;
 			}
-			else 
+			else
 			{
 				Console.WriteLine("Bitmap is empty"); // :/	
 			}
@@ -281,10 +284,11 @@ namespace Bookkeeper
 			GC.Collect();
 		}
 		//========================================================================================
+
 		// Button Add Entry clicked
 		void AddEntry_OnClick(object sender, EventArgs e)
 		{
-			if ((etDescription.Text != "") && (_dateDisplay.Text != "-") && (etTotalAmountInclTax.Text != "") )
+			if ((etDescription.Text != "") && (_dateDisplay.Text != "-") && (etTotalAmountInclTax.Text != ""))
 			{
 				// Create Entry
 				Entry temp = new Entry
@@ -299,6 +303,7 @@ namespace Bookkeeper
 					TaxRateID = currentTaxRate.Id,
 					//Path = "...", kameran funkar inte...
 				};
+
 
 				// add Entry
 				BookkeeperMenager.AddEntry(temp);
