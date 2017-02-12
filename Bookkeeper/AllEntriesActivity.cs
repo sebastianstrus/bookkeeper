@@ -55,20 +55,3 @@ namespace Bookkeeper
 		}
 	}
 }
-
-
-
-/*
- @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.add_category_item:
-                getActivity().getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.container, new NewCategoryFragment()).commit();
-                break;
-            default:
-                System.out.println("error inflating the menu");
-        }
-        return true;
-    }
-    */

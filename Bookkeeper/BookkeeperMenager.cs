@@ -88,7 +88,7 @@ namespace Bookkeeper
 
 			//SQLiteConnection db = new SQLiteConnection(dbPath + @"\database.db");
 			db.CreateTable<TaxRate>();
-			db.DeleteAll<TaxRate>();
+			//db.DeleteAll<TaxRate>();
 			TaxRate tr1 = new TaxRate() { Value = 0.25, };
 			TaxRate tr2 = new TaxRate { Value = 0.12, };
 			TaxRate tr3 = new TaxRate { Value = 0.06, };
@@ -144,16 +144,40 @@ namespace Bookkeeper
 				});
 			}
 			entries = db.Table<Entry>().ToList();
+			//BookkeeperMenager.UpdateEntryList();
 
 		}
 
 		public static void AddEntry(Entry e)
 		{
-			SQLiteConnection db = new SQLiteConnection(instance.dbPath + @"\database.db");
+			SQLiteConnection db = new SQLiteConnection(instance.dbPath);
 			db.Insert(e);
 			instance.entries = db.Table<Entry>().ToList();
 
 		}
+
+		public static void UpdateEntry(Entry e, int entryId)
+		{
+			SQLiteConnection db = new SQLiteConnection(instance.dbPath);
+			Entry temp = db.Get<Entry>(entryId);
+			temp = e;
+			db.Update(temp);
+			instance.entries = db.Table<Entry>().ToList();
+
+		}
+
+		/*public static void UpdateEntryList()
+		{
+			SQLiteConnection db = new SQLiteConnection(BookkeeperMenager.Instance.dbPath);
+			instance.entries = db.Table<Entry>().ToList();
+		}*/
+
+		/*public static void UppdateEntry(Entry e)
+		{
+			SQLiteConnection db = new SQLiteConnection(BookkeeperMenager.Instance.dbPath);
+			db.Update(e);
+			instance.entries = db.Table<Entry>().ToList();
+		}*/
 
 		public string GetTaxReport()
 		{

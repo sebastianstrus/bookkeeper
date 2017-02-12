@@ -4,6 +4,7 @@
 	<string name="hello">Hello World, Click Me!</string>
 	<string name="app_name">Bookkeeper</string>
 	<string name="activity_new_entry">Här kan du lägga till nya händelser, antigen inkomster eller utgifter.</string>
+	<string name="activity_all_antries_description">Här kan du se alla händelser. Klicka för att kolla detaljer eller redigera.</string>
 	<string name="date">Datum:    </string>
 	<string name="choose_date">Väjl datum</string>
 	<string name="description">Beskrivning: </string>

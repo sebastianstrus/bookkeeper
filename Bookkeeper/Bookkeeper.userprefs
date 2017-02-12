@@ -1,22 +1,35 @@
 ﻿<Properties StartupConfiguration="{36E1F6EC-FE74-4C6F-B659-EF0668E14027}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="NewEntryActivity.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="EntryAdapter.cs">
     <Files>
-      <File FileName="BookkeeperMenager.cs" Line="37" Column="3" />
-      <File FileName="Resources/values/Strings.xml" Line="31" Column="32" />
-      <File FileName="Model/Entry.cs" Line="25" Column="50" />
+      <File FileName="BookkeeperMenager.cs" Line="100" Column="20" />
+      <File FileName="NewEntryActivity.cs" Line="193" Column="4" />
+      <File FileName="Resources/values/Strings.xml" Line="25" Column="46" />
+      <File FileName="Model/Entry.cs" Line="25" Column="4" />
+      <File FileName="Model/Account.cs" Line="10" Column="20" />
+      <File FileName="AllEntriesActivity.cs" Line="58" Column="1" />
       <File FileName="EntryAdapter.cs" Line="40" Column="32" />
-      <File FileName="Model/Account.cs" Line="14" Column="3" />
-      <File FileName="Model/TaxRate.cs" Line="19" Column="1" />
-      <File FileName="AllEntriesActivity.cs" Line="5" Column="1" />
-      <File FileName="MainMenuActivity.cs" Line="39" Column="8" />
-      <File FileName="NewEntryActivity.cs" Line="23" Column="34" />
-      <File FileName="Model/Type.cs" Line="7" Column="4" />
     </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="Bookkeeper" expanded="True">
+            <Node name="Bookkeeper" expanded="True">
+              <Node name="Model" expanded="True" />
+              <Node name="Resources" expanded="True">
+                <Node name="layout" expanded="True" />
+                <Node name="values" expanded="True" />
+              </Node>
+              <Node name="EntryAdapter.cs" selected="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <MonoDevelop.Ide.ItemProperties.Bookkeeper PreferredExecutionTarget="Android.Nexus_5_API_25" />
+  <MonoDevelop.Ide.ItemProperties.Bookkeeper AndroidDesignerPreferredDevice="Nexus 4" PreferredExecutionTarget="Android.FastEmulator" />
 </Properties>

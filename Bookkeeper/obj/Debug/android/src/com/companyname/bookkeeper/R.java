@@ -1593,7 +1593,7 @@ containing a value of this type.
         public static final int notification_template_icon_bg=0x7f020047;
     }
     public static final class id {
-        public static final int action0=0x7f0c006d;
+        public static final int action0=0x7f0c006e;
         public static final int action_bar=0x7f0c0041;
         public static final int action_bar_activity_content=0x7f0c0000;
         public static final int action_bar_container=0x7f0c0040;
@@ -1602,7 +1602,7 @@ containing a value of this type.
         public static final int action_bar_subtitle=0x7f0c0022;
         public static final int action_bar_title=0x7f0c0021;
         public static final int action_context_bar=0x7f0c0042;
-        public static final int action_divider=0x7f0c0071;
+        public static final int action_divider=0x7f0c0072;
         public static final int action_menu_divider=0x7f0c0002;
         public static final int action_menu_presenter=0x7f0c0003;
         public static final int action_mode_bar=0x7f0c003e;
@@ -1613,44 +1613,44 @@ containing a value of this type.
         public static final int always=0x7f0c001b;
         public static final int beginning=0x7f0c0018;
         public static final int btn_account_report=0x7f0c0054;
-        public static final int btn_add_entry=0x7f0c0069;
+        public static final int btn_add_entry=0x7f0c006a;
         public static final int btn_all_antries=0x7f0c0057;
         public static final int btn_create_reports=0x7f0c0058;
-        public static final int btn_date_button=0x7f0c005e;
+        public static final int btn_date_button=0x7f0c005f;
         public static final int btn_new_entry=0x7f0c0056;
-        public static final int btn_open_camera=0x7f0c0067;
+        public static final int btn_open_camera=0x7f0c0068;
         public static final int btn_tax_report=0x7f0c0055;
         public static final int buttonPanel=0x7f0c002b;
-        public static final int cancel_action=0x7f0c006e;
+        public static final int cancel_action=0x7f0c006f;
         public static final int checkbox=0x7f0c0039;
-        public static final int chronometer=0x7f0c0074;
+        public static final int chronometer=0x7f0c0075;
         public static final int collapseActionView=0x7f0c001c;
         public static final int contentPanel=0x7f0c0031;
         public static final int custom=0x7f0c0037;
         public static final int customPanel=0x7f0c0036;
         public static final int decor_content_parent=0x7f0c003f;
         public static final int default_activity_button=0x7f0c0027;
-        public static final int description=0x7f0c005f;
+        public static final int description=0x7f0c0060;
         public static final int disableHome=0x7f0c000c;
         public static final int edit_query=0x7f0c0043;
         public static final int end=0x7f0c0019;
-        public static final int end_padder=0x7f0c0079;
+        public static final int end_padder=0x7f0c007a;
         public static final int entry_list=0x7f0c0053;
         public static final int expand_activities_button=0x7f0c0025;
         public static final int expanded_menu=0x7f0c0038;
         public static final int home=0x7f0c0004;
         public static final int homeAsUp=0x7f0c000d;
         public static final int icon=0x7f0c0029;
-        public static final int id_amount=0x7f0c0063;
+        public static final int id_amount=0x7f0c0064;
         public static final int ifRoom=0x7f0c001d;
         public static final int image=0x7f0c0026;
-        public static final int image_button=0x7f0c0068;
-        public static final int info=0x7f0c0078;
-        public static final int line1=0x7f0c0072;
-        public static final int line3=0x7f0c0076;
+        public static final int image_button=0x7f0c0069;
+        public static final int info=0x7f0c0079;
+        public static final int line1=0x7f0c0073;
+        public static final int line3=0x7f0c0077;
         public static final int listMode=0x7f0c0009;
         public static final int list_item=0x7f0c0028;
-        public static final int media_actions=0x7f0c0070;
+        public static final int media_actions=0x7f0c0071;
         public static final int middle=0x7f0c001a;
         public static final int multiply=0x7f0c0013;
         public static final int never=0x7f0c001e;
@@ -1660,11 +1660,11 @@ containing a value of this type.
         public static final int progress_circular=0x7f0c0005;
         public static final int progress_horizontal=0x7f0c0006;
         public static final int radio=0x7f0c003b;
-        public static final int radioGroup1=0x7f0c005a;
+        public static final int radioGroup1=0x7f0c005b;
         public static final int rb_all_entries=0x7f0c0050;
-        public static final int rb_expense=0x7f0c005c;
+        public static final int rb_expense=0x7f0c005d;
         public static final int rb_important_entries=0x7f0c0051;
-        public static final int rb_income=0x7f0c005b;
+        public static final int rb_income=0x7f0c005c;
         public static final int rb_not_important_entries=0x7f0c0052;
         public static final int screen=0x7f0c0014;
         public static final int scroll=0x7f0c0059;
@@ -1687,30 +1687,31 @@ containing a value of this type.
         public static final int showHome=0x7f0c0010;
         public static final int showTitle=0x7f0c0011;
         public static final int spacer=0x7f0c002c;
-        public static final int spinner_account=0x7f0c0062;
-        public static final int spinner_tax_rate=0x7f0c0064;
-        public static final int spinner_type=0x7f0c0060;
+        public static final int spinner_account=0x7f0c0063;
+        public static final int spinner_tax_rate=0x7f0c0065;
+        public static final int spinner_type=0x7f0c0061;
         public static final int split_action_bar=0x7f0c0007;
         public static final int src_atop=0x7f0c0015;
         public static final int src_in=0x7f0c0016;
         public static final int src_over=0x7f0c0017;
-        public static final int status_bar_latest_event_content=0x7f0c006f;
+        public static final int status_bar_latest_event_content=0x7f0c0070;
         public static final int submit_area=0x7f0c004c;
         public static final int tabMode=0x7f0c000b;
-        public static final int text=0x7f0c0077;
-        public static final int text2=0x7f0c0075;
+        public static final int text=0x7f0c0078;
+        public static final int text2=0x7f0c0076;
         public static final int textSpacerNoButtons=0x7f0c0034;
-        public static final int time=0x7f0c0073;
+        public static final int time=0x7f0c0074;
         public static final int title=0x7f0c002a;
         public static final int title_template=0x7f0c002f;
         public static final int topPanel=0x7f0c002e;
-        public static final int total_amount_excl_tax=0x7f0c0066;
-        public static final int tvAmount=0x7f0c006c;
-        public static final int tvDate=0x7f0c006a;
-        public static final int tvTitle=0x7f0c006b;
-        public static final int tv_account_label=0x7f0c0061;
-        public static final int tv_date_display=0x7f0c005d;
-        public static final int tv_total_amount_label=0x7f0c0065;
+        public static final int total_amount_excl_tax=0x7f0c0067;
+        public static final int tvAmount=0x7f0c006d;
+        public static final int tvDate=0x7f0c006b;
+        public static final int tvTitle=0x7f0c006c;
+        public static final int tv_account_label=0x7f0c0062;
+        public static final int tv_activity_new_entry=0x7f0c005a;
+        public static final int tv_date_display=0x7f0c005e;
+        public static final int tv_total_amount_label=0x7f0c0066;
         public static final int up=0x7f0c0008;
         public static final int useLogo=0x7f0c0012;
         public static final int withText=0x7f0c001f;
@@ -1792,9 +1793,10 @@ containing a value of this type.
         public static final int abc_shareactionprovider_share_with=0x7f060010;
         public static final int abc_shareactionprovider_share_with_application=0x7f060011;
         public static final int abc_toolbar_collapse_description=0x7f060012;
-        public static final int account=0x7f06001e;
-        public static final int account_label=0x7f06001d;
-        public static final int account_report=0x7f060022;
+        public static final int account=0x7f06001f;
+        public static final int account_label=0x7f06001e;
+        public static final int account_report=0x7f060023;
+        public static final int activity_all_antries_description=0x7f060017;
         public static final int activity_new_entry=0x7f060016;
         /** <string-array name="type_income_array">
 		<item>Försäljning (3000)</item>
@@ -1807,22 +1809,22 @@ containing a value of this type.
 		<item>Reklam och PR (5900)</item>
 	</string-array>
          */
-        public static final int amount_incl_tax=0x7f06001c;
+        public static final int amount_incl_tax=0x7f06001d;
         public static final int app_name=0x7f060015;
-        public static final int choose_date=0x7f060018;
-        public static final int date=0x7f060017;
-        public static final int description=0x7f060019;
+        public static final int choose_date=0x7f060019;
+        public static final int date=0x7f060018;
+        public static final int description=0x7f06001a;
         public static final int hello=0x7f060014;
         public static final int status_bar_notification_info_overflow=0x7f060013;
-        public static final int tax_rate=0x7f060020;
+        public static final int tax_rate=0x7f060021;
         /** <string-array name="account_array">
 		<item>Kassa (1910)</item>
 		<item>Företagskonto (1930)</item>
 		<item>Egna insättningar (2018)</item>
 	</string-array>
          */
-        public static final int tax_rate_label=0x7f06001f;
-        public static final int tax_report=0x7f060023;
+        public static final int tax_rate_label=0x7f060020;
+        public static final int tax_report=0x7f060024;
         /** <string-array name="tax_rate_array">
 		<item>25%</item>
 		<item>12%</item>
@@ -1830,9 +1832,9 @@ containing a value of this type.
 		<item>0%</item>
 	</string-array>
          */
-        public static final int total_amount_excl_tax=0x7f060021;
-        public static final int typ_label=0x7f06001a;
-        public static final int type=0x7f06001b;
+        public static final int total_amount_excl_tax=0x7f060022;
+        public static final int typ_label=0x7f06001b;
+        public static final int type=0x7f06001c;
     }
     public static final class style {
         public static final int AlertDialog_AppCompat=0x7f09007d;

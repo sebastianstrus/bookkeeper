@@ -37,6 +37,9 @@ namespace Bookkeeper
 		public override long GetItemId(int position)
 		{
 			Intent intent = new Intent(context, typeof(NewEntryActivity));
+			Console.WriteLine("GetItemId in EntryAdapter is going:");
+			Console.WriteLine("w intent:  int position: " + position);
+			Console.WriteLine("w intent: entries[position].Id.ToString() " + entries[position].Id.ToString());
 			intent.PutExtra("POSITION_NR", position);
 			intent.PutExtra("ENTRY_ID", entries[position].Id.ToString());
 			context.StartActivity(intent);

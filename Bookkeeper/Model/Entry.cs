@@ -22,7 +22,8 @@ namespace Bookkeeper
 
 		public override string ToString()
 		{
-			return string.Format("ID: {0}\nIsIncome: {1}\nDate: {2}\nDescription: {3}\nTypeID: {4}\nAccountID: {5}\nAmount: {6}\nTaxRateID {7}\n", Id, IsIncome, Date, Description, TypeID, AccountID, Amount, TaxRateID);
+			return string.Format("ID: {0}\nIsIncome: {1}\nDate: {2}\nDescription: {3}\nTypeID: {4}\nAccountID: {5}\nAmount: {6}\nTaxRateID {7}\n", 
+			                     Id, IsIncome, Date, Description, TypeID, AccountID, Amount, TaxRateID);
 		}
 
 	}

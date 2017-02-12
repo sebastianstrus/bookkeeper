@@ -26,9 +26,9 @@ namespace Bookkeeper
 	[Activity(Label = "New Entry")]
 	public class NewEntryActivity : Activity
 	{
-		//int idEntryToEdit = -1;
+		string entryId;
 		//Entry entryToEdit;
-		TextView _dateDisplay, tvTotalAmountExclTax;
+		TextView tvNewEntry, tvDateDisplay, tvTotalAmountExclTax;
 		Button _dateSelectButton, btnAddEntry;
 		ImageView _imageButton;
 		RadioButton rbIncome, rbExpense;
@@ -43,21 +43,14 @@ namespace Bookkeeper
 			base.OnCreate(savedInstanceState);
 			SetContentView(Resource.Layout.activity_new_entry);
 
-			string entryId = Intent.GetStringExtra("ENTRY_ID") ?? "-1";
-			Console.WriteLine("EntryID to edit: " + entryId);
-			if (int.Parse(entryId) >= 0)
-			{
-				setEntryToEdit(int.Parse(entryId));
-			}
-
 			// Spinners
 			spinnerType = FindViewById<Spinner>(Resource.Id.spinner_type);
 			spinnerType.ItemSelected += new EventHandler<AdapterView.ItemSelectedEventArgs>(spinner_TypeAccountSelected);
-			/*adapterIncomeType = ArrayAdapter.CreateFromResource(this, Resource.Array.type_income_array, 
-				Android.Resource.Layout.SimpleSpinnerItem);*/
+			//adapterIncomeType = ArrayAdapter.CreateFromResource(this, Resource.Array.type_income_array, 
+			//	Android.Resource.Layout.SimpleSpinnerItem);
 			adapterIncomeType = new ArrayAdapter(this, Android.Resource.Layout.SimpleSpinnerItem, BookkeeperMenager.Instance.IncomeTypeArray.ToList());
-			/*adapterExpenseType = ArrayAdapter.CreateFromResource(this, Resource.Array.type_expense_array,
-				Android.Resource.Layout.SimpleSpinnerItem);*/
+			//adapterExpenseType = ArrayAdapter.CreateFromResource(this, Resource.Array.type_expense_array,
+			//	Android.Resource.Layout.SimpleSpinnerItem);
 			adapterExpenseType = new ArrayAdapter(this, Android.Resource.Layout.SimpleSpinnerItem, BookkeeperMenager.Instance.ExpenseTypeArray.ToList());
 
 			adapterIncomeType.SetDropDownViewResource(Android.Resource.Layout.SimpleSpinnerDropDownItem);
@@ -77,7 +70,7 @@ namespace Bookkeeper
 			//=============================================================================================
 
 			//DatePicker
-			_dateDisplay = FindViewById<TextView>(Resource.Id.tv_date_display);
+			tvDateDisplay = FindViewById<TextView>(Resource.Id.tv_date_display);
 			_dateSelectButton = FindViewById<Button>(Resource.Id.btn_date_button);
 			_dateSelectButton.Click += DateSelect_OnClick;
 
@@ -104,7 +97,7 @@ namespace Bookkeeper
 			btnAddEntry = FindViewById<Button>(Resource.Id.btn_add_entry);
 			btnAddEntry.Click += AddEntry_OnClick;
 
-
+			tvNewEntry = FindViewById<TextView>(Resource.Id.tv_activity_new_entry);
 			etDescription = FindViewById<EditText>(Resource.Id.description);
 
 			// set total amount excl. tax
@@ -114,68 +107,106 @@ namespace Bookkeeper
 			etTotalAmountInclTax.TextChanged += etTextChanged;
 			etTotalAmountInclTax.KeyPress += etKeyPress;
 
+			// check if there is Entry to Edit. If 'yes' set ID, else id= -1.
+			entryId = Intent.GetStringExtra("ENTRY_ID") ?? "-1";
+			Console.WriteLine("EntryID to edit: " + entryId);
+			if (int.Parse(entryId) >= 0)
+			{
 
+				setEntryToEdit(int.Parse(entryId));
+			}
 
 
 		}
 
 		//========================================================================================
 		//========================================================================================
+
+		// set data for Entry to edit
 		private void setEntryToEdit(int entryId)
 		{
 			SQLiteConnection db = new SQLiteConnection(BookkeeperMenager.Instance.dbPath);
-			Entry entryToEdit = db.Get<Entry>(entryId);//.Where(b => (b.Id == entryId)).ToList();
+			Entry entryToEdit = db.Get<Entry>(entryId);//.Where(e => (e.Id == entryId)).ToList();
 			Console.WriteLine(entryToEdit); // this is ok
 
-			/*if (!entryToEdit.IsIncome)
-			{
-				rbIncome.Checked = true; //.Toggle();
-			}// Object reference not set to an instance of an object.
-			else
+			if (!entryToEdit.IsIncome)
 			{
 				rbExpense.Checked = true;
-			}*/
-			//_dateDisplay.Text = entryToEdit.Date;
-			//etDescription.Text = entryToEdit.Description;
+				spinnerType.Adapter = adapterExpenseType;
+			}
 
-			// spinner:
-			/*TypeID = currentTypeAccount.Number,//spinnerType.SelectedItem,//.ToString(),// rbIncome.Checked ? list1 : list2, if make class
-					
-					// spinner:
-					AccountID = currentMoneyAccount.Number,
-					
-					etTotalAmountInclTax.Text = entryToEdit.Amount // + "" // check first char '-'
-					TaxRateID = currentTaxRate.Id, //  set spinner
-					//Path = "...", kameran funkar inte...*/
-			String a = btnAddEntry.Text;
-			Console.WriteLine(a);
-			//btnAddEntry.Text = Text = "Save";
-		}
+			tvDateDisplay.Text = entryToEdit.Date;
+			etDescription.Text = entryToEdit.Description;
+
+			// set spinner Type
+			List <Account> list = BookkeeperMenager.Instance.AccountList;
+			string spinnerTypeValue = list.Where(a => (a.Number == entryToEdit.TypeID)).ToList()[0].ToString();
+			int indexType = 0;
+			for (int i = 0; i < list.Count(); i++)
+			{
+				if (list[i].ToString() == (spinnerTypeValue))
+				{
+					indexType = i;
+				}
+			}
+			spinnerType.SetSelection(indexType); //TODO indexOf
+
+			// set spinner Account
+			string spinnerAccountValue = list.Where(a => (a.Number == entryToEdit.AccountID)).ToList()[0].ToString();
+			int indexAccount = 0;
+			for (int i = 0; i < list.Count(); i++)
+			{
+				if (list[i].ToString() == (spinnerAccountValue))
+				{
+					indexAccount = i;
+				}
+			}
+			spinnerAccount.SetSelection(indexAccount); // 0, 1, 2
+
+			etTotalAmountInclTax.Text = entryToEdit.Amount + "";
+			spinnerTaxRate.SetSelection(entryToEdit.TaxRateID-1);
+
+			//Path = "...", kameran funkar inte...*/
+
+			setAmountExclTax();
+			tvNewEntry.Text = "";
+			btnAddEntry.Text = "Save";
+			}
+
+
+
 
 
 		// set total amount excl tax
 		void etTextChanged(object sender, TextChangedEventArgs e)
 		{
-			string temp = spinnerTaxRate.SelectedItem.ToString();
-
-			double value = double.Parse(temp.Substring(0, temp.Length - 1)) / 100;
-
-			if (etTotalAmountInclTax.Text != "")
-			{
-				tvTotalAmountExclTax.Text = Math.Round(double.Parse(etTotalAmountInclTax.Text.ToString()) / (1 + value), 2) + "";
-			}
+			setAmountExclTax();
 		}
 
 		void etKeyPress(object sender, View.KeyEventArgs e)
 		{
 			e.Handled = false;
-			string temp = spinnerTaxRate.SelectedItem.ToString();
+			setAmountExclTax();
+		}
 
-			double value = double.Parse(temp.Substring(0, temp.Length - 1)) / 100;
+		void setAmountExclTax()
+		{
+			Console.WriteLine("=================================1");
+			string temp = spinnerTaxRate.SelectedItem.ToString();
+			Console.WriteLine("string temp is: " + temp);
+			double value = double.Parse(temp.Substring(0, temp.Length - 1)) / 100.0;
+			//TODO
+			//double value = BookkeeperMenager.Instance.TaxRateList.ToList().[spinnerTaxRate.SelectedItemPosition-1]; //0, 1, 2, 3
+			Console.WriteLine("double value is: " + value);
+			Console.WriteLine("=================================2");
 
 			if (etTotalAmountInclTax.Text != "")
 			{
-				tvTotalAmountExclTax.Text = Math.Round(double.Parse(etTotalAmountInclTax.Text.ToString()) / (1 + value), 2) + "";
+				tvTotalAmountExclTax.Text = Math.Round(double.Parse(etTotalAmountInclTax.Text.ToString()) / (1.0 + value), 2) + "";
+			}
+			else 
+			{
+				tvTotalAmountExclTax.Text = "";
 			}
 		}
 
@@ -208,6 +239,7 @@ namespace Bookkeeper
 		{
 			spinnerType.Adapter = adapterIncomeType;
 		}
+
 		void RadioButtonExpenseClick(object sender, EventArgs e)
 		{
 			spinnerType.Adapter = adapterExpenseType;
@@ -218,7 +250,7 @@ namespace Bookkeeper
 		{
 			DatePickerFragment frag = DatePickerFragment.NewInstance(delegate (DateTime time)
 																	 {
-																		 _dateDisplay.Text = time.ToShortDateString();
+																		 tvDateDisplay.Text = time.ToShortDateString();
 																	 });
 			frag.Show(FragmentManager, DatePickerFragment.TAG);
 		}
@@ -288,13 +320,14 @@ namespace Bookkeeper
 		// Button Add Entry clicked
 		void AddEntry_OnClick(object sender, EventArgs e)
 		{
-			if ((etDescription.Text != "") && (_dateDisplay.Text != "-") && (etTotalAmountInclTax.Text != ""))
+			// validation
+			if ((etDescription.Text != "") && (tvDateDisplay.Text != "-") && (etTotalAmountInclTax.Text != ""))
 			{
 				// Create Entry
 				Entry temp = new Entry
 				{
 					IsIncome = rbIncome.Checked ? true : false,
-					Date = _dateDisplay.Text,
+					Date = tvDateDisplay.Text,
 					Description = etDescription.Text,
 					TypeID = currentTypeAccount.Number,//spinnerType.SelectedItem,//.ToString(),// rbIncome.Checked ? list1 : list2, if make class
 					AccountID = currentMoneyAccount.Number,
@@ -304,14 +337,42 @@ namespace Bookkeeper
 					//Path = "...", kameran funkar inte...
 				};
 
+				//SQLiteConnection db = new SQLiteConnection(BookkeeperMenager.Instance.dbPath);
+				// uppdate or add Entry
+				if (int.Parse(entryId) >= 0)
+				{
+					BookkeeperMenager.UpdateEntry(temp, int.Parse(entryId));
+					/*Entry entry = db.Get<Entry>(entryId);
+					entry = temp;
+					db.Update(entry);
+					BookkeeperMenager.UpdateEntryList();*/
+					Toast.MakeText(this, "Saved", ToastLength.Short).Show();
 
-				// add Entry
-				BookkeeperMenager.AddEntry(temp);
-				Toast.MakeText(this, "Added", ToastLength.Short).Show();
+					// Go to MainMenuActivity
+					Intent intent = new Intent(this, typeof(AllEntriesActivity));
+					this.StartActivity(intent);
+				}
+				else
+				{
+					BookkeeperMenager.AddEntry(temp);
+					//db.Insert(temp);
+					//BookkeeperMenager.UpdateEntryList();
+					Toast.MakeText(this, "Added", ToastLength.Short).Show();
 
-				// Go to MainMenuActivity
-				Intent intent = new Intent(this, typeof(MainMenuActivity));
-				this.StartActivity(intent);
+					// Go to MainMenuActivity
+					Intent intent = new Intent(this, typeof(MainMenuActivity));
+					this.StartActivity(intent);
+				}
+
+
+				// tuuu
+				/*SQLiteConnection db = new SQLiteConnection(BookkeeperMenager.Instance.dbPath);
+				db.Insert(temp);
+				BookkeeperMenager.Instance.Entries = db.Table<Entry>().ToList();
+				// tuuu*/
+
+
+
 			}
 			else
 			{
