@@ -241,7 +241,7 @@ namespace Bookkeeper
 		{
 			DatePickerFragment frag = DatePickerFragment.NewInstance(delegate (DateTime time)
 																	 {
-																		 tvDateDisplay.Text = time.ToShortDateString();
+				tvDateDisplay.Text = time.ToString("yyyy-MM-dd");
 																	 });
 			frag.Show(FragmentManager, DatePickerFragment.TAG);
 		}
