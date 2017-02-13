@@ -1,5 +1,4 @@
-﻿
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,6 +19,12 @@ namespace Bookkeeper
 		{
 			base.OnCreate(savedInstanceState);
 			SetContentView(Resource.Layout.activity_account_report);
+
+			TextView tvAccountsReport = FindViewById<TextView>(Resource.Id.accounts_report);
+			tvAccountsReport.Text = BookkeeperMenager.Instance.GetAccountReport();
+
+
+
 		}
 	}
 }

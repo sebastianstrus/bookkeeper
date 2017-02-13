@@ -28,9 +28,9 @@ namespace Bookkeeper
 		public List<Entry> Entries { get { return entries; } }
 
 		private List<Account> incomeAccountList;
-		public List<Account> IncomeTypeArray { get { return incomeAccountList; } }
+		public List<Account> IncomeAccountList { get { return incomeAccountList; } }
 		private List<Account> expenseAccountList;
-		public List<Account> ExpenseTypeArray { get { return expenseAccountList; } }
+		public List<Account> ExpenseAccountList { get { return expenseAccountList; } }
 
 		public List<Entry> IncomeEntries { get { return entries.Where(b => b.IsIncome).ToList(); } }//.Property.Value
 		public List<Entry> ExpenseEntries { get { return entries.Where(b => !b.IsIncome).ToList(); } }
@@ -85,10 +85,7 @@ namespace Bookkeeper
 			expenseAccountList = db.Table<Account>().Where(a => a.Type == "expense").ToList();
 			moneyAccountList = db.Table<Account>().Where(a => a.Type == "money").ToList();
 
-
-			//SQLiteConnection db = new SQLiteConnection(dbPath + @"\database.db");
 			db.CreateTable<TaxRate>();
-			//db.DeleteAll<TaxRate>();
 			TaxRate tr1 = new TaxRate() { Value = 0.25, };
 			TaxRate tr2 = new TaxRate { Value = 0.12, };
 			TaxRate tr3 = new TaxRate { Value = 0.06, };
@@ -118,7 +115,7 @@ namespace Bookkeeper
 					AccountID = mAccount1.Number,
 					Amount = 10000,
 					TaxRateID = tr1.Id
-					//Path = "sebastianstrus/projects/" Kameran funkar inte
+					//Path = "sebastianstrus/projects/..." Kameran funkar inte
 				});
 				db.Insert(new Entry
 				{
@@ -129,7 +126,7 @@ namespace Bookkeeper
 					AccountID = mAccount2.Number,
 					Amount = 200,
 					TaxRateID = tr2.Id
-					//Path = "sebastianstrus/projects/" Kameran funkar inte
+					//Path = 
 				});
 				db.Insert(new Entry
 				{
@@ -140,12 +137,10 @@ namespace Bookkeeper
 					AccountID = mAccount2.Number,
 					Amount = 5000,
 					TaxRateID = tr3.Id
-					//Path = "sebastianstrus/projects/" Kameran funkar inte
+					//Path = "sebastianstrus/projects/" 
 				});
 			}
 			entries = db.Table<Entry>().ToList();
-			//BookkeeperMenager.UpdateEntryList();
-
 		}
 
 		public static void AddEntry(Entry e)
@@ -153,104 +148,123 @@ namespace Bookkeeper
 			SQLiteConnection db = new SQLiteConnection(instance.dbPath);
 			db.Insert(e);
 			instance.entries = db.Table<Entry>().ToList();
-
+			db.Close();
 		}
 
 		public static void UpdateEntry(Entry e, int entryId)
 		{
 			SQLiteConnection db = new SQLiteConnection(instance.dbPath);
 			Entry temp = db.Get<Entry>(entryId);
-			temp = e;
+
+			temp.IsIncome = e.IsIncome;
+			temp.Date = e.Date;
+			temp.Description = e.Description;
+			temp.TypeID = e.TypeID;
+			temp.AccountID = e.AccountID;
+			temp.Amount = e.Amount;
+			temp.TaxRateID = e.TaxRateID;
+
 			db.Update(temp);
 			instance.entries = db.Table<Entry>().ToList();
-
+			db.Close();
 		}
-
-		/*public static void UpdateEntryList()
-		{
-			SQLiteConnection db = new SQLiteConnection(BookkeeperMenager.Instance.dbPath);
-			instance.entries = db.Table<Entry>().ToList();
-		}*/
-
-		/*public static void UppdateEntry(Entry e)
-		{
-			SQLiteConnection db = new SQLiteConnection(BookkeeperMenager.Instance.dbPath);
-			db.Update(e);
-			instance.entries = db.Table<Entry>().ToList();
-		}*/
 
 		public string GetTaxReport()
 		{
-			return "abc";
+			double incomeTax = 0.0;
+			double expenseTax = 0.0;
+
+			foreach(Entry entry in entries)
+			{
+				if (entry.IsIncome)
+				{
+					TaxRate taxRate = taxRateList[entry.TaxRateID - 1];
+					double value = taxRate.Value;
+					incomeTax += Math.Round(double.Parse(entry.Amount.ToString()) -double.Parse(entry.Amount.ToString()) / (1.0 + value), 2);
+				}
+				else
+				{
+					TaxRate taxRate = taxRateList[entry.TaxRateID - 1];
+					double value = taxRate.Value;
+					expenseTax += Math.Round(double.Parse(entry.Amount.ToString()) - double.Parse(entry.Amount.ToString()) / (1.0 + value), 2);
+				}
+			}
+			string taxReport = "Betald moms för alla inkomster är " + incomeTax + "kr.\nBetald moms för alla utgifter är  " + expenseTax+"kr.";
+			return taxReport;
+		}
+
+		public string GetAccountReport()
+		{
+			string accountReport = "";
+
+			string incomeAccountReport = "";
+			string expenseAccountReport = "";
+			string moneyAccountReport = "";
+
+			foreach (Account account in incomeAccountList)
+			{
+				double total = 0.0;
+				string someEntries = "";
+
+				foreach (Entry entry in entries)
+				{
+					if (entry.TypeID == account.Number)
+					{
+						someEntries += "\n" + entry.Date + " - " + entry.Description + ", " + entry.Amount + "kr";
+						total += entry.Amount;
+					}
+					   
+				}
+				incomeAccountReport += "*** " + account + " (total: " + total + "kr)"+ someEntries +"\n***\n";
+				
+			}
+
+			foreach (Account account in expenseAccountList)
+			{
+
+				double total = 0.0;
+				string someEntries = "";
+				foreach (Entry entry in entries)
+				{
+					if (entry.TypeID == account.Number)
+					{
+						someEntries += "\n" + entry.Date + " - " + entry.Description + ", -" + entry.Amount + "kr";
+						total += entry.Amount;
+					}
+				}
+
+				string minus = total > 0 ? "-" : "";
+				expenseAccountReport += "*** " + account + " (total: " + minus + total + "kr)"+ someEntries +"\n***\n";
+			}
+
+			foreach (Account account in moneyAccountList)
+			{
+				double total = 0.0;
+				string someEntries = "";
+				foreach (Entry entry in entries)
+				{
+					if (entry.AccountID == account.Number)
+					{
+						if (entry.IsIncome)
+						{
+							someEntries += "\n" + entry.Date + " - " + entry.Description + ", " + entry.Amount + "kr";
+							total += entry.Amount;
+						}
+						else
+						{
+							someEntries += "\n" + entry.Date + " - " + entry.Description + ", -" + entry.Amount + "kr";
+							total -= entry.Amount;
+						}
+					}
+				}
+				moneyAccountReport += "*** " + account + " (total: " + total + "kr)" + someEntries + "\n***\n";
+			}
+
+			accountReport = incomeAccountReport + "\n\n" + expenseAccountReport + "\n\n" + moneyAccountReport;
+			return accountReport;
 		}
 	}
 }
 
-/*
-Listor:
-- IncomeAccounts
-- ExpenseAccounts
-- MoneyAccounts
-- TaxRates
-- Entries
-*/
-
-/*
-Databas-kopplingar i dataklasserna
-Ni ska utöka era klasser Entry, Account och TaxRate med annoterad information om i vilka
-tabeller de ska sparas.Ni kan ha en tabell per klass, dvs Entries, Accounts och TaxRates.
-Till Entry och TaxRate kan ni lägga till en Id-property av typen int, som ni mappar till
-_id-kolumnen och gör autoinkrementerande.
-Till Account kan ni använda Number som primary key, eftersom det ändå är unikt för alla konton.
-Då behöver ni inte kalla den _id, utan låt kolumnen namnges automatiskt.Ni kan också fundera
-på hur olika Account-typer ska skiljas åt - hur vet man vilka som är IncomeAccounts,
-ExpenseAccounts och MoneyAccounts?
-*/
 
 
-/*
-Databas-kopplingar i BookkeeperManager
-När man skapar BookkeeperManager,
-vill ni först etablera en anslutning till databasen.Sedan ska ni skapa upp tabellerna om de inte
-redan finns. Om tabellen av Entry innehåller 0 poster, gör det ingenting.Det betyder att
-användaren inte har skapat upp något än. Däremot, om tabellerna av Account och TaxRate
-innehåller 0 poster, innebär det att det är första gången appen startas.Då kan ni lägga in
-exempel-data i er databas. (Gör bara detta om antal poster är 0 dock - annars får ni duplicerade
-items i era spinners!)
-När getter på någon lista anropas,
-T.ex.IncomeAccounts, så ska ni göra ett query mot databasen, och hämta alla
-IncomeAccounts.Nu lagrar ni inte längre listorna själva, utan informationen lagras i tabeller.
-Då måste ni ta en tabell, göra ett query på den och konvertera resultatet till en lista som ni
-returnerar.
-(Eftersom er listas Adapter förväntar sig en lista, är det enklast att här köra.ToList()-metoden.
-Då behöver ni inte förändra i er adapter.)
-Checklista del 2
-- “Visa alla händelser”­vyn
-- Ny activity
-- Skapa också er egen Adapter, som bygger på listor
-- Skapa också er egen list item XML
-- Databas-kopplingar
-- Utöka era Entry, Account och TaxRate-klasser
-- Tänk på: vilka egenskaper som ska vara primary keys
-- Tänk på: hur ska man skilja olika Accounts från varandra?
-- Förändra er BookkeperManager
-- Ska inte längre lagra informationen i listor, utan i databas-tabeller
-TODO:
-- Konstruktor: skapa upp tabeller om de inte redan finns, och fyll
-XxxAccounts/TaxRates med information om de är tomma
-- Entries, XxxAccounts, TaxRates: gör ett query på respektive tabell, och
-konvertera resultatet till en lista
-VG del 2
-Gör så att man kan klicka på en händelse i listan, och komma till en “redigera”­vy för den här
-händelsen.Den ska se ut precis som “Ny händelse”, men den ska ha all information om den
-klickade händelsen ifylld.När man klickar på spara, ska den aktuella händelsen uppdateras.
-Ingen ny ska alltså skapas!
-För att åstadkomma detta behöver ni:
-- Uppdatera “Visa alla händelser” (klick på list item)
-- Uppdatera er backend(ska kunna uppdatera en Entry.Hur går detta till i SQLite.net?)
-- Skapa en Redigera-vy.
-- Tips: Uppdatera er vy för “Ny händelse”, och skicka med extra information om
-den ska gå in i “redigera”­läge.Mycket av koden är identisk; det är
-uppskapandet och sparandet som varierar beroende på om vi är inne i
-“ny”­läge eller “existerande”­läge.
-*/

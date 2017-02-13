@@ -15,16 +15,11 @@ namespace Bookkeeper
 		protected override void OnCreate(Bundle savedInstanceState)
 		{
 			base.OnCreate(savedInstanceState);
+						SetContentView(Resource.Layout.activity_all_entries);
 
-			// Set our view from the "main" layout resource
-			SetContentView(Resource.Layout.activity_all_entries);
 
-			// Get our button from the layout resource,
-			// and attach an event to it
 			entryList = FindViewById<ListView>(Resource.Id.entry_list);
 			entryList.Adapter = new EntryAdapter(this, BookkeeperMenager.Instance.Entries);
-
-			// go to add entry onClick
 
 			rbAllEntries = FindViewById<RadioButton>(Resource.Id.rb_all_entries);
 			rbImportantEntries = FindViewById<RadioButton>(Resource.Id.rb_important_entries);
@@ -35,8 +30,6 @@ namespace Bookkeeper
 			rbNotImportantEntries.Click += button_UpdateEntries;
 
 		}
-
-
 
 		private void button_UpdateEntries(object sender, EventArgs e)
 		{

@@ -19,6 +19,11 @@ namespace Bookkeeper
 		{
 			base.OnCreate(savedInstanceState);
 			SetContentView(Resource.Layout.activity_tax_report);
+
+			TextView tvTaxReport = FindViewById<TextView>(Resource.Id.tax_report);
+			tvTaxReport.Text = BookkeeperMenager.Instance.GetTaxReport();
+
 		}
 	}
 }
+

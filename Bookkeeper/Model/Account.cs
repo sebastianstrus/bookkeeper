@@ -18,9 +18,3 @@ namespace Bookkeeper
 	}
 }
 
-
-/*
- * Jag tror att för att kunna få ut t.ex. ett Account-objekt från en spinner så måste du se till 
- * att Account-klassen ärver från Java.Lang.Object, och när du hämtar objektet från en spinner 
- * t.ex med spinner.SelectedItem så behöver du typecasta det. Typ såhär: Account a = (Account) spinner.SelectedItem;
- * */

@@ -4,17 +4,12 @@ using Android.App;
 using Android.Content;
 using Android.OS;
 using Android.Widget;
-using SQLite;
 
 namespace Bookkeeper
 {
 	[Activity(Label = "Bookkeeper", MainLauncher = true, Icon = "@mipmap/icon")]
 	public class MainMenuActivity : Activity
 	{
-		public String dbPath;
-
-		//db.CreateTable<Person>();
-		//"A field initializer cannot reference th non-static field, method or property"
 		private Button btnNewEntry;
 		private Button btnAllEntries;
 		private Button btnCreateReports;
@@ -32,14 +27,12 @@ namespace Bookkeeper
 							this.StartActivity(intent);
 						};
 
-
 			btnAllEntries = FindViewById<Button>(Resource.Id.btn_all_antries);
 						btnAllEntries.Click += delegate
 						{
 							Intent intent = new Intent(this, typeof(AllEntriesActivity));
 							this.StartActivity(intent);
 						};
-
 
 			btnCreateReports = FindViewById<Button>(Resource.Id.btn_create_reports);
 						btnCreateReports.Click += delegate
