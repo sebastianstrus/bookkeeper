@@ -109,7 +109,7 @@ namespace Bookkeeper
 				db.Insert(new Entry()
 				{
 					IsIncome = true,
-					Date = "3/5/2017",
+					Date = "2017-01-05",
 					Description = "Dator till ITHS",
 					TypeID = inAccount1.Number,
 					AccountID = mAccount1.Number,
@@ -120,7 +120,7 @@ namespace Bookkeeper
 				db.Insert(new Entry
 				{
 					IsIncome = false,
-					Date = "4/5/2017",
+					Date = "2017-02-10",
 					Description = "Mat på ICA",
 					TypeID = exAccount1.Number,
 					AccountID = mAccount2.Number,
@@ -131,7 +131,7 @@ namespace Bookkeeper
 				db.Insert(new Entry
 				{
 					IsIncome = false,
-					Date = "5/5/2017",
+					Date = "2017-02-12",
 					Description = "Ny domän",
 					TypeID = exAccount3.Number,
 					AccountID = mAccount2.Number,

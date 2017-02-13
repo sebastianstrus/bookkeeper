@@ -39,6 +39,7 @@ namespace Bookkeeper
 			DateTime selectedDate = new DateTime(year, monthOfYear + 1, dayOfMonth);
 			Log.Debug(TAG, selectedDate.ToLongDateString());
 			_dateSelectedHandler(selectedDate);
+
 		}
 	}
 }
