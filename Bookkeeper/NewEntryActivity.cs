@@ -23,7 +23,7 @@ using AUri = Android.Net.Uri;
 
 namespace Bookkeeper
 {
-	[Activity(Label = "New Entry")]
+	[Activity(Label = "New Entry", NoHistory = true)]
 	public class NewEntryActivity : Activity
 	{
 		string entryId;
@@ -199,7 +199,7 @@ namespace Bookkeeper
 			}
 			else 
 			{
-				tvTotalAmountExclTax.Text = "";
+				tvTotalAmountExclTax.Text = "Här kan du redigera händelse.";
 			}
 		}
 
@@ -338,7 +338,9 @@ namespace Bookkeeper
 
 					// Go to MainMenuActivity
 					Intent intent = new Intent(this, typeof(AllEntriesActivity));
-					this.StartActivity(intent);
+
+					StartActivity(intent);
+					Finish();
 				}
 				else
 				{
@@ -349,7 +351,9 @@ namespace Bookkeeper
 
 					// Go to MainMenuActivity
 					Intent intent = new Intent(this, typeof(MainMenuActivity));
-					this.StartActivity(intent);
+					StartActivity(intent);
+					Finish();
+
 				}
 			}
 			else

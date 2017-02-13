@@ -14,7 +14,7 @@
     <activity android:label="CreateReportsActivity" android:name="md5678b55b847118b97b77ab09e3bf8bf02.CreateReportsActivity" />
     <activity android:label="AccountReportActivity" android:name="md5678b55b847118b97b77ab09e3bf8bf02.AccountReportActivity" />
     <activity android:label="TaxReportActivity" android:name="md5678b55b847118b97b77ab09e3bf8bf02.TaxReportActivity" />
-    <activity android:label="New Entry" android:name="md5678b55b847118b97b77ab09e3bf8bf02.NewEntryActivity" />
+    <activity android:label="New Entry" android:noHistory="true" android:name="md5678b55b847118b97b77ab09e3bf8bf02.NewEntryActivity" />
     <provider android:name="mono.MonoRuntimeProvider" android:exported="false" android:initOrder="2147483647" android:authorities="com.companyname.bookkeeper.mono.MonoRuntimeProvider.__mono_init__" />
     <!--suppress ExportedReceiver-->
     <receiver android:name="mono.android.Seppuku">

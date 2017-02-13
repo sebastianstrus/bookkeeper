@@ -43,6 +43,7 @@ namespace Bookkeeper
 			intent.PutExtra("POSITION_NR", position);
 			intent.PutExtra("ENTRY_ID", entries[position].Id.ToString());
 			context.StartActivity(intent);
+			context.Finish();
 
 			return position;
 		}
