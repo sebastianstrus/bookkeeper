@@ -1,14 +1,10 @@
 ﻿<Properties StartupConfiguration="{36E1F6EC-FE74-4C6F-B659-EF0668E14027}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Bookkeeper/NewEntryActivity.cs">
-    <Files>
-      <File FileName="Bookkeeper/NewEntryActivity.cs" Line="16" Column="1" />
-    </Files>
-  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workbench />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <MonoDevelop.Ide.ItemProperties.Bookkeeper AndroidDesignerPreferredDevice="Nexus 4" PreferredExecutionTarget="Android.FastEmulator" />
+  <MonoDevelop.Ide.ItemProperties.Bookkeeper AndroidDesignerPreferredDevice="Nexus 4" PreferredExecutionTarget="Android.Fast3Emulator" />
   <MultiItemStartupConfigurations />
 </Properties>

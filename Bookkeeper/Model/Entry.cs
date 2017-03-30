@@ -16,7 +16,6 @@ namespace Bookkeeper
 		public int AccountID { get; set; }//Account
 		public int Amount { get; set; }
 		public int TaxRateID { get; set; }
-		//public String Path { get; set; } //Kameran funkar inte...
 
 
 

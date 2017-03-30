@@ -327,7 +327,7 @@ namespace Bookkeeper
 					AccountID = currentMoneyAccount.Number,
 					Amount = int.Parse(etTotalAmountInclTax.Text),
 					TaxRateID = currentTaxRate.Id,
-					//Path = "...", kameran funkar inte :/
+					//TODO: check camera on real device
 				};
 
 				// uppdate or add Entry

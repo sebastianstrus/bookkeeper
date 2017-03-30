@@ -39,8 +39,7 @@ namespace Bookkeeper
 				this.StartActivity(intent);
 			};
 
-			//TODO:
-			// public string GetTaxReport() w backend
+
 
 
 		}
